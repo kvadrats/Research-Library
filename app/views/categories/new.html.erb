@@ -1,0 +1,7 @@
+<h3>New Subategory</h3>
+
+<%= render @category.parent if @category.parent %>
+
+<%= render "form" %>
+
+<p><%= link_to "Back to Categories", categories_path %></p>

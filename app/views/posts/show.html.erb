@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>Articlelink:</strong>
+  <%= @post.articlelink %>
+</p>
+
+<p>
+  <strong>Researchlink:</strong>
+  <%= @post.researchlink %>
+</p>
+
+<p>
+  <strong>Researchauth:</strong>
+  <%= @post.researchauth %>
+</p>
+
+<p>
+  <strong>Articleauth:</strong>
+  <%= @post.articleauth %>
+</p>
+
+<p>
+  <strong>Researchdate:</strong>
+  <%= @post.researchdate %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

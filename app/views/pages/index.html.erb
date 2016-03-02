@@ -1,0 +1,53 @@
+<div class="frontpage">
+	<ul class="tabmenu">
+		<li><a class="active" href="/">New</a></li>
+		<li><a href="/">Something</a></li>
+		<li><a href="/">Top</a></li>
+		<li><a href="/">Discussed</a></li>
+	</ul>
+
+	<ul class="subjectmenu">
+		<li><a href="/">All</a></li>
+		<li><a href="/">Psychology</a></li>
+		<li><a href="/">Computer Science</a></li>
+		<li><a href="/">Neurology</a></li>
+		<li><a href="/">Physics</a></li>
+		<li><a href="/">Mathematics</a></li>
+		<li><a href="/">Anatomy</a></li>
+		<li><a href="/">Chemistry</a></li>
+	</ul>
+
+	<div class="posts">
+		<div class="post">
+			<h3>Use of MDMA in theraphy</h3>
+			<p>DEA has finally approved the use of MDMA in theraphy, 
+			in this journal post we can see why, what are the effects of MDMA.</p>
+			<a href="http://america.aljazeera.com/articles/2015/3/17/clinical-trial-approved-for-mdma-psychotherapy.html">Article</a>
+			<a href="http://jop.sagepub.com/content/early/2015/02/25/0269881114568039.full">Research</a>
+			<p>Article author: Renee Lewis</p>
+			<p>Research authors: Pål-Ørjan Johansen and Teri Suzanne Krebs</p>
+			<a href="/">Read more</a>
+		</div>
+		<div class="post">
+			<h3>Phantom Vibrations</h3>
+			<p>Research is about how our phones make us hallucinate a vibration every now and then,
+			why it is this way.</p>
+			<a href="http://nypost.com/2016/01/05/your-smartphone-is-making-you-hallucinate/">Article</a>
+			<a href="http://www.sciencedirect.com/science/article/pii/S0747563212000799">Research</a>
+			<p>Article author: Haley Goldberg</p>
+			<p>Research authors: Michelle Drouin, Daren H. Kaiser, Daniel A. Miller</p>
+			<a href="/">Read more</a>
+		</div>
+		<% @posts.each do |post| %>
+		<div class="post">
+			<h3><%= post.title %></h3>
+			<p><%= post.description %></p>
+			<%= link_to "Research", post.researchlink %>
+			<%= link_to "Article", post.articlelink %>
+			<p>Article author: <%= post.articleauth %></p>
+			<p>Research author: <%= post.researchauth %></p>
+			<p>Research date: <%= post.researchdate %></p>
+		</div>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,131 @@
+/* line 6, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.post {
+  display: block;
+  margin-top: 2em;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+  padding: 2em;
+}
+
+/* line 17, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.tabmenu {
+  margin-left: 2em;
+  margin-top: 6em;
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+  white-space: nowrap;
+  display: inline-block;
+}
+/* line 28, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.tabmenu li {
+  float: left;
+}
+/* line 32, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.tabmenu li a {
+  display: inline;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* line 40, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.tabmenu li a:hover:not(.active) {
+  background-color: #ddd;
+}
+/* line 44, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.tabmenu li a.active {
+  color: white;
+  background-color: black;
+}
+
+/* line 50, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.subjectmenu {
+  margin-top: 10em;
+  margin-left: 2em;
+  list-style-type: none;
+  background-color: #f1f1f1;
+  overflow: none;
+  width: 15%;
+  height: 100%;
+  padding: 0;
+  float: left;
+}
+/* line 61, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/pages.scss */
+.subjectmenu li a {
+  text-decoration: none;
+  display: block;
+  border: 1px solid #e7e7e7;
+  padding: 8px 0 8px 16px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/* line 26, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/application.scss */
+#menu {
+  z-index: 999;
+}
+/* line 29, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/application.scss */
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 3em;
+}
+/* line 41, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/application.scss */
+#menu img {
+  max-height: 70%;
+  max-width: 70%;
+}
+/* line 46, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/application.scss */
+#menu li {
+  float: left;
+}
+/* line 50, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/application.scss */
+#menu li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* line 58, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/application.scss */
+#menu li a:hover {
+  background-color: #111;
+}
+
+/* line 63, /Users/emilskantans/Desktop/project/research/app/assets/stylesheets/application.scss */
+#userbox {
+  right: 3em;
+  top: 11em;
+  float: right;
+  position: fixed;
+  background-color: #f1f1f1;
+  z-index: 999;
+  display: block;
+  width: 200px;
+  padding: 10px;
+  border: solid #e1e1e1;
+  border-width: 2px 2px;
+}

@@ -1,0 +1,7 @@
+<h3>Category</h3>
+
+<p>
+	<%= subcats @category.subtree.arrange(:order => :name) %>
+</p>
+
+<p><%= link_to "Back to Categories", categories_path %></p>

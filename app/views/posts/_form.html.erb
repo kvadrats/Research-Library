@@ -1,0 +1,45 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, "Title:" %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "Short description:" %><br>
+    <%= f.text_area :description, rows: 6 %>
+  </div>
+  <div class="field">
+    <%= f.label :articlelink, "Link to article:" %><br>
+    <%= f.text_area :articlelink %>
+  </div>
+  <div class="field">
+    <%= f.label :researchlink, "Link to research:" %><br>
+    <%= f.text_area :researchlink %>
+  </div>
+  <div class="field">
+    <%= f.label :researchauth, "Research author:" %><br>
+    <%= f.text_field :researchauth %>
+  </div>
+  <div class="field">
+    <%= f.label :articleauth, "Article author:" %><br>
+    <%= f.text_field :articleauth %>
+  </div>
+  <div class="field">
+    <%= f.label :researchdate, "Research date:" %><br>
+    <%= f.date_select :researchdate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
