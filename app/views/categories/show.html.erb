@@ -1,7 +1,5 @@
-<h3>Category</h3>
+<p id="notice"><%= notice %></p>
 
-<p>
-	<%= subcats @category.subtree.arrange(:order => :name) %>
-</p>
+<p><%= @subcategory.name.titleize %></p>
 
 <p><%= link_to "Back to Categories", categories_path %></p>

@@ -1,7 +1,10 @@
-<h3>New Subategory</h3>
+<%= form_for(@category) do |f| %>
 
-<%= render @category.parent if @category.parent %>
+      <%= f.select(:id, 
+      (@categories),  prompt: "categories") %>
 
-<%= render "form" %>
+            <%= f.select(:subcategory_id, 
+      (@subcategories),  prompt: "subcategories") %>
 
-<p><%= link_to "Back to Categories", categories_path %></p>
+      <%= f.submit "Create new product", categories_path %>
+<% end %>

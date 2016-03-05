@@ -39,6 +39,12 @@
     <%= f.label :researchdate, "Research date:" %><br>
     <%= f.date_select :researchdate %>
   </div>
+  <div class="select">
+    <%= f.select("category", "category_id", (@categories),  prompt: "categories") %>
+  </div>
+  <div class="select">
+    <%= f.select(:id, (@subcategories),  prompt: "subcategories") %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

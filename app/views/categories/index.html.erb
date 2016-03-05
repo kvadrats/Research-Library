@@ -1,5 +1,10 @@
 <h3>Categories</h3>
 
-<%= subcats @categories.arrange(:order => :name) %>
-
-<%= render "form" %>
+<%= form_for @category, url: {action: "show"}, html: {method: "get"} do |f| %>
+  <%= f.select :category_id, options_for_select(@categories.collect { |category|
+    [category.name.titleize, category.id] }, 1), {}, { id: 'categories_select' } %>
+  <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
+    [subcategory.name.titleize, subcategory.id] }, 0), {}, { id: 'subcategories_select' } %>
+  <%= f.submit "submit" %>
+  
+<% end %>

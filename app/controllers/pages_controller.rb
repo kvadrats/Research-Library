@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
 	def index
 		@posts = Post.order(:title)
+    	@categories = Category.order(:name)
 	end
 end

@@ -11,16 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302205243) do
+ActiveRecord::Schema.define(version: 20160303231908) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "ancestry"
   end
-
-  add_index "categories", ["ancestry"], name: "index_categories_on_ancestry"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -49,6 +46,23 @@ ActiveRecord::Schema.define(version: 20160302205243) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "posts_subcategories", id: false, force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "subcategory_id"
+  end
+
+  add_index "posts_subcategories", ["post_id"], name: "index_posts_subcategories_on_post_id"
+  add_index "posts_subcategories", ["subcategory_id"], name: "index_posts_subcategories_on_subcategory_id"
+
+  create_table "subcategories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

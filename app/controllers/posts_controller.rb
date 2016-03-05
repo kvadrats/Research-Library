@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @categories = Category.all.map { |c| [c.name, c.id] }
+    @subcategories = Subcategory.where("category_id = ?", Category.first.id)
   end
 
   # GET /posts/1
@@ -69,6 +71,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :articlelink, :researchlink, :researchauth, :articleauth, :researchdate, :category_ids)
+      params.require(:post).permit(:title, :description, :articlelink, :researchlink, :researchauth, :articleauth, :researchdate)
     end
+
 end

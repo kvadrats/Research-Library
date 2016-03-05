@@ -17,7 +17,6 @@ gem 'devise'
 gem 'jquery-turbolinks'
 gem 'delayed_job_active_record'
 gem 'devise_zxcvbn'
-gem 'ancestry'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

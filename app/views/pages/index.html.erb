@@ -8,13 +8,9 @@
 
 	<ul class="subjectmenu">
 		<li><a href="/">All</a></li>
-		<li><a href="/">Psychology</a></li>
-		<li><a href="/">Computer Science</a></li>
-		<li><a href="/">Neurology</a></li>
-		<li><a href="/">Physics</a></li>
-		<li><a href="/">Mathematics</a></li>
-		<li><a href="/">Anatomy</a></li>
-		<li><a href="/">Chemistry</a></li>
+		<% @categories.each do |category| %>
+		<li><%= link_to category.name, category %></li>
+		<% end %>
 	</ul>
 
 	<div class="posts">

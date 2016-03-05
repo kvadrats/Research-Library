@@ -16,3 +16,10 @@ Post.create(title: 'Something but actually nothing',
 	researchdate: '2016-05-02')
 
 Category.create(name: 'Psychology')
+Category.create(name: 'Neuroscience')
+Category.create(name: 'Physics')
+  
+Subcategory.create(name: "Behavioral Neuroscience", category_id: Category.find_by(name: "Neuroscience").id)
+Subcategory.create(name: "Conciousness", category_id: Category.find_by(name: "Psychology").id)
+Subcategory.create(name: "PSI", category_id: Category.find_by(name: "Psychology").id)
+Subcategory.create(name: "Spaghetti", category_id: Category.find_by(name: "Neuroscience").id)
