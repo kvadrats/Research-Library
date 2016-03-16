@@ -1,10 +1,27 @@
 <h3>Categories</h3>
 
-<%= form_for @category, url: {action: "show"}, html: {method: "get"} do |f| %>
-  <%= f.select :category_id, options_for_select(@categories.collect { |category|
-    [category.name.titleize, category.id] }, 1), {}, { id: 'categories_select' } %>
-  <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
-    [subcategory.name.titleize, subcategory.id] }, 0), {}, { id: 'subcategories_select' } %>
-  <%= f.submit "submit" %>
-  
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Subcategory</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+          <% @subcategories.each do |subcategory| %>
+              <td><%= subcategory.name %></td>
+          <% end %>
+      </tr>
+    <% end %>
+    <% @subcategories.each do |subcategory| %>
+      <tr>
+        <td><%= subcategory.category.name %></td>
+        <td><%= subcategory.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

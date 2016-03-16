@@ -3,12 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $(document).on 'change', '#categories_select', (evt) ->
+  $(document).on 'change', '#category_select', (evt) ->
     $.ajax 'update_subcategories',
       type: 'GET'
       dataType: 'script'
       data: {
-        category_id: $("#categories_select option:selected").val()
+        category_id: $("#category_select option:selected").val()
       }
       error: (jqXHR, textStatus, errorThrown) ->
         console.log("AJAX Error: #{textStatus}")

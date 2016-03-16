@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-    get 'categories/update_subcategories', as: 'update_subcategories'
-    get 'categories/show'
+    get 'posts/update_subcategories', as: 'update_subcategories'
+    get 'posts/show'
+    
    root 'pages#index'
    get '/secret', to: 'pages#secret', as: :secret
 

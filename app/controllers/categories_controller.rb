@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all.map { |c| [c.name, c.id] }
-    @category = Category.new
+    @categories = Category.all #.map { |c| [c.name, c.id] }
+    #@category = Category.new
     #@subcategory = Subcategory.new
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
   end
@@ -15,8 +15,8 @@ class CategoriesController < ApplicationController
   def new
     @category = Category.new
     @subcategory = Subcategory.new
-    @categories = Category.all.map { |c| [c.name, c.id] }
-    @subcategories = Subcategory.all.map { |s| [s.name, s.id] }
+    @categories = Category.all.map { |category| [category.name, ccategory.id] }
+    @subcategories = Subcategory.all.map { |s| [s.name, s.id, s.categories_id] }
   end
 
   def create
