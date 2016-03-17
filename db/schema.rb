@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303231908) do
+ActiveRecord::Schema.define(version: 20160317131649) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -43,9 +43,12 @@ ActiveRecord::Schema.define(version: 20160303231908) do
     t.string   "researchauth"
     t.string   "articleauth"
     t.date     "researchdate"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "subcategory_id"
   end
+
+  add_index "posts", ["subcategory_id"], name: "index_posts_on_subcategory_id"
 
   create_table "posts_subcategories", id: false, force: :cascade do |t|
     t.integer "post_id"
