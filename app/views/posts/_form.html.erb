@@ -39,16 +39,14 @@
     <%= f.label :researchdate, "Research date:" %><br>
     <%= f.date_select :researchdate %>
   </div>
-  <%= form_for :select do |f| %>
   <div class="select">
-      <%= f.select :category_id, options_for_select(@categories, 1), {}, :id => "category_select" %>
+      <%= f.select :id, options_for_select(@categories, 1), {}, id:"category_select" %>
   </div>
   <div class="select">
-      <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
-    [subcategory.name.titleize, subcategory.id]}, 0), {}, :id => "subcategory_select" %>
+      <%= f.select :id, options_for_select(@subcategories.collect { |subcategory|
+    [subcategory.name.titleize, subcategory.id]}, 0), {}, id: "subcategory_select" %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
-  <% end %>
 <% end %>

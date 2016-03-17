@@ -1,2 +1,2 @@
 $("#subcategory_select").empty()
-  .append("<%= escape_javascript(render(:partial => @subcategories) %>")
+  .append("<%= escape_javascript(render(:partial => @subcategories)) %>")

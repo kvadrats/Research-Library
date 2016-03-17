@@ -6,6 +6,7 @@ $ ->
   $(document).on 'change', '#category_select', (evt) ->
     $.ajax 'update_subcategories',
       type: 'GET'
+      format: 'js'
       dataType: 'script'
       data: {
         category_id: $("#category_select option:selected").val()

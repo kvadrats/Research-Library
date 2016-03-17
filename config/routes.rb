@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    collection do
+      get 'update_subcategories' => 'posts#update_subcategories'
+    end
+  end
   devise_for :users
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-    get 'posts/update_subcategories', as: 'update_subcategories'
-    get 'posts/show'
-    
+   #get 'posts/update_subcategories' => 'posts#update_subcategories', as: 'update_subcategories'
+
    root 'pages#index'
    get '/secret', to: 'pages#secret', as: :secret
 

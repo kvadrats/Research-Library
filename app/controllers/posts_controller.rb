@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js
   # GET /posts
   # GET /posts.json
   def index
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @subcategory = Subcategory.find_by("id = ?", params[:subcategory_id])
   end
 
   # GET /posts/new
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @categories = Category.all.map { |category| [category.name, category.id] }
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
-    #@subcat_opt = ""
+    #@subcategories = ""
   end
 
   # GET /posts/1/edit
@@ -71,18 +72,20 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  private
-
     def update_subcategories
       @subcategories = Subcategory.where("category_id = ?", params[:category_id])
       respond_to do |format|
         format.js
+        #format.html { render(:partial => @subcategories) }
       end
     end
+
+  private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
