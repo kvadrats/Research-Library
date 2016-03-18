@@ -1,3 +1,31 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.field{
+    width: 500px;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    padding: 5px 10px 10px 10px;
+    font-size: large;
+  	margin-left: 25%;
+	margin-right: 25%;
+}
+
+.input-field{
+	font-size: 100%;
+    width: 492px;
+    padding: 3px;
+    margin: 0;
+    border: 1px solid gray;
+}
+
+.actions{
+  	margin-left: 25%;
+	margin-right: 25%;
+}
+
+h1{
+	margin-left: 25%;
+    margin-right: 25%;
+}

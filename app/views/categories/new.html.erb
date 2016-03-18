@@ -1,10 +1,5 @@
-<%= form_for(@category) do |f| %>
+<h1>Create a new main category</h1>
 
-      <%= f.select(:id, 
-      (@categories),  prompt: "categories") %>
+<%= render 'form' %>
 
-            <%= f.select(:subcategory_id, 
-      (@subcategories),  prompt: "subcategories") %>
-
-      <%= f.submit "Create new product", categories_path %>
-<% end %>
+<%= link_to 'Back', categories_path %>

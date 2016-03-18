@@ -50,14 +50,6 @@ ActiveRecord::Schema.define(version: 20160317131649) do
 
   add_index "posts", ["subcategory_id"], name: "index_posts_on_subcategory_id"
 
-  create_table "posts_subcategories", id: false, force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "subcategory_id"
-  end
-
-  add_index "posts_subcategories", ["post_id"], name: "index_posts_subcategories_on_post_id"
-  add_index "posts_subcategories", ["subcategory_id"], name: "index_posts_subcategories_on_subcategory_id"
-
   create_table "subcategories", force: :cascade do |t|
     t.string   "name"
     t.integer  "category_id"

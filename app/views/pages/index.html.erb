@@ -6,12 +6,18 @@
 		<li><a href="/">Discussed</a></li>
 	</ul>
 
-	<ul class="subjectmenu">
-		<li><a href="/">All</a></li>
-		<% @categories.each do |category| %>
-		<li><%= link_to category.name, category %></li>
-		<% end %>
-	</ul>
+  <ul class="subjectmenu">
+    <% @categories.each do |category| %>
+    <li><%= link_to category.name, category %></li>
+      <ul>
+      <% @subcategories.each do |subcategory| %>
+      	<% next if category.id != subcategory.category_id %>
+        <li><%=link_to subcategory.name %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </ul>
+
 
 	<div class="posts">
 		<div class="post">

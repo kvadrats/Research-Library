@@ -1,5 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= @subcategory.name.titleize %></p>
+<div class="category">
+  <div class="name">
+    <h3><%= @category.name %></h3>
+  </div>
+  <ul>
+  	<%= @subcategories.each do |subcategory| %>
+  		<li><%= subcategory.name %></li>
+  	<% end %>
+  </ul>
+  <div class="actions">
+    <%= link_to "Destroy", @category, :confirm => "Are you sure?", :method => :delete %>
+  </div>
+</div>
+
+<%= render 'subcategory' %>
 
 <p><%= link_to "Back to Categories", categories_path %></p>

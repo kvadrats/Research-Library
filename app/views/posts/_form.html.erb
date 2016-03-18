@@ -1,3 +1,4 @@
+<div class="post-submit-form">
 <%= form_for @post do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -13,40 +14,44 @@
 
   <div class="field">
     <%= f.label :title, "Title:" %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :description, "Short description:" %><br>
-    <%= f.text_area :description, rows: 6 %>
+    <%= f.text_area :description, rows: 6, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :articlelink, "Link to article:" %><br>
-    <%= f.text_area :articlelink %>
+    <%= f.text_area :articlelink, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :researchlink, "Link to research:" %><br>
-    <%= f.text_area :researchlink %>
+    <%= f.text_area :researchlink, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :researchauth, "Research author:" %><br>
-    <%= f.text_field :researchauth %>
+    <%= f.text_field :researchauth, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :articleauth, "Article author:" %><br>
-    <%= f.text_field :articleauth %>
+    <%= f.text_field :articleauth, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :researchdate, "Research date:" %><br>
-    <%= f.date_select :researchdate %>
+    <%= f.date_select :researchdate, class: 'input-field' %>
   </div>
-  <div class="select">
-      <%= f.select :id, options_for_select(@categories, 1), {}, id:"category_select" %>
+  <div class="field">
+    <%= f.label :id, "Category:" %><br>
+    <%= f.select :id, options_for_select(@categories, 1), {}, id:"category_select" %>
   </div>
-  <div class="select">
-      <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
+  <div class="field">
+    <%= f.label :subcategory_id, "Subcategory:" %><br>
+    <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
     [subcategory.name.titleize, subcategory.id]}, 0), {}, id: "subcategory_select" %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

@@ -1,1 +1,8 @@
- <option value="<%= subcategory.id %>"><%= subcategory.name.titleize %></option>
+<%= form_for @subcategory do |f| %>
+  <p>
+    <%= f.label :name, "Subcategory name:" %><br />
+    <%= f.text_area :name %>
+  </p>
+	<%= f.hidden_field :category_id, :value => @category.id %>
+  <p><%= f.submit "Create subcategory" %></p>
+<% end %>

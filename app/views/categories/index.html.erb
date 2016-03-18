@@ -1,27 +1,16 @@
-<h3>Categories</h3>
+<h1>Categories</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Subcategory</th>
-    </tr>
-  </thead>
 
-  <tbody>
+  <ul class="admin-subjectmenu">
     <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-          <% @subcategories.each do |subcategory| %>
-              <td><%= subcategory.name %></td>
-          <% end %>
-      </tr>
+    <li><%= link_to category.name, category %></li>
+      <ul>
+      <% @subcategories.each do |subcategory| %>
+      	<% next if category.id != subcategory.category_id %>
+        <li><%=link_to subcategory.name %></li>
+      <% end %>
+      </ul>
     <% end %>
-    <% @subcategories.each do |subcategory| %>
-      <tr>
-        <td><%= subcategory.category.name %></td>
-        <td><%= subcategory.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </ul>
+
+<button id="new-cat-path"><%=link_to "Create new category", new_category_path %></button>
