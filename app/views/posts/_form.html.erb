@@ -12,6 +12,7 @@
     </div>
   <% end %>
 
+    <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="field">
     <%= f.label :title, "Title:" %><br>
     <%= f.text_field :title, class: 'input-field' %>

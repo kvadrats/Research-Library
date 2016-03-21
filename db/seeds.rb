@@ -13,7 +13,9 @@ Post.create(title: 'Something but actually nothing',
 	researchlink: 'http://america.aljazeera.com/articles/2015/3/17/clinical-trial-approved-for-mdma-psychotherapy.html',
 	articleauth: 'Litte Timmy',
 	researchauth: 'Big Jimmy',
-	researchdate: '2016-05-02')
+	researchdate: '2016-05-02',
+	subcategory_id: '1',
+	user_id: '1')
 
 Category.create(name: 'Psychology')
 Category.create(name: 'Neuroscience')

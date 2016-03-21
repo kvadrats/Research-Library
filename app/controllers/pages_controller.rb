@@ -6,4 +6,8 @@ class PagesController < ApplicationController
     	@categories = Category.all
     	@subcategories = Subcategory.all
 	end
+
+	def show
+		@posts = Post.order(:created_at)
+	end
 end

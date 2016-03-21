@@ -2,18 +2,16 @@
 
 <div class="category">
   <div class="name">
-    <h3><%= @category.name %></h3>
+    <h3><%= @category.name %></h3><p><%= link_to "Destroy", @category, :confirm => "Are you sure?", :method => :delete %>
+</p>
   </div>
   <ul>
-  	<%= @subcategories.each do |subcategory| %>
-  		<li><%= subcategory.name %></li>
+  	<% @subcategories.each do |subcategory| %>
+  		<li><%= link_to subcategory.name, subcategory %></li>
   	<% end %>
   </ul>
-  <div class="actions">
-    <%= link_to "Destroy", @category, :confirm => "Are you sure?", :method => :delete %>
-  </div>
 </div>
 
-<%= render 'subcategory' %>
+<%= render 'subcategory_form' %>
 
 <p><%= link_to "Back to Categories", categories_path %></p>

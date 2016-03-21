@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>Category:</strong>
+  <%= @subcategory.category.name %>
+</p>
+
+<p>
+<strong>Subcategory:</strong>
+  <%= @subcategory.name %> <%= link_to 'Destroy', subcategory_path(@subcategory), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+<p><%= link_to "Back to Categories", categories_path %></p>

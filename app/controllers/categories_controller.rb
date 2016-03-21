@@ -27,8 +27,10 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
-    redirect_to categories_url
+
+    if @category.destroy
+      redirect_to categories_url
+    end
   end
 
   def category_params

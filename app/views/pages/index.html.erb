@@ -49,6 +49,8 @@
 			<p>Article author: <%= post.articleauth %></p>
 			<p>Research author: <%= post.researchauth %></p>
 			<p>Research date: <%= post.researchdate %></p>
+			<p>Submitter: <%= post.user.name %></p>
+			<p><%= link_to "Read more", post %></p>
 		</div>
 		<% end %>
 	</div>
