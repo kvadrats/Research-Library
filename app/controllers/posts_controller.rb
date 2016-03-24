@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     #@subcategory = Subcategory.find_by("id = ?", params[:subcategory_id])
-    @user = User.find_by("id = ?", params[:user_id])
+    #@user = User.find_by("id = ?", params[:user_id])
   end
 
   # GET /posts/new

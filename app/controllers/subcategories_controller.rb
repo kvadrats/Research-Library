@@ -10,11 +10,11 @@ class SubcategoriesController < ApplicationController
 	def create
 		@subcategory = Subcategory.new(subcategory_params)
 
-		if @subcategory.save
+		  if @subcategory.save
      		redirect_to :back
     	else
       		render :new
-      	end
+      end
 	end
 
   def destroy

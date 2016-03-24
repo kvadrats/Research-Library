@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321113651) do
+ActiveRecord::Schema.define(version: 20160323125425) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 20160321113651) do
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id"
+
+  create_table "subcategories_users", id: false, force: :cascade do |t|
+    t.integer "user_id",        null: false
+    t.integer "subcategory_id", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

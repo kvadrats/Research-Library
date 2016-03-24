@@ -10,4 +10,15 @@
   <%= @subcategory.name %> <%= link_to 'Destroy', subcategory_path(@subcategory), method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
 
+<p>
+
+<% if current_user.subcategories.find_by(id: @subcategory) %>
+<%= button_to( "Unsubscribe", unsubscribe_subcategory_path(@subcategory))%>
+<% else %>
+<%= button_to( "Subscribe", subscribe_subcategory_path(@subcategory))%>
+<% end %>
+
+
+</p>
+
 <p><%= link_to "Back to Categories", categories_path %></p>
