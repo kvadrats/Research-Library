@@ -1,24 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-<strong>Category:</strong>
-  <%= @subcategory.category.name %>
-</p>
+<div class="subcategory-options">
+	<p>
+	<% if current_user.subcategories.find_by(id: @subcategory) %>
+		<%= button_to( "Unsubscribe", unsubscribe_subcategory_path(@subcategory))%>
+	<% else %>
+		<%= button_to( "Subscribe", subscribe_subcategory_path(@subcategory))%>
+	<% end %>
+	</p>
 
-<p>
-<strong>Subcategory:</strong>
-  <%= @subcategory.name %> <%= link_to 'Destroy', subcategory_path(@subcategory), method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
-
-<p>
-
-<% if current_user.subcategories.find_by(id: @subcategory) %>
-<%= button_to( "Unsubscribe", unsubscribe_subcategory_path(@subcategory))%>
-<% else %>
-<%= button_to( "Subscribe", subscribe_subcategory_path(@subcategory))%>
-<% end %>
+</div>
 
 
-</p>
 
-<p><%= link_to "Back to Categories", categories_path %></p>
+<div class="frontpage">
+	<ul class="tabmenu">
+		<li><a class="active" href="/">New</a></li>
+		<li><a href="/">Something</a></li>
+		<li><a href="/">Top</a></li>
+		<li><a href="/">Discussed</a></li>
+	</ul>
+
+  <ul class="subjectmenu">
+    <% @categories.each do |category| %>
+    <li><%= link_to category.name, category %></li>
+      <ul>
+      <% @subcategories.each do |subcategory| %>
+      	<% next if category.id != subcategory.category_id %>
+        <li><%=link_to subcategory.name, subcategory %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </ul>
+	<div class="posts">
+		<% @posts.each do |post| %>
+		<div class="post">
+			<h3><%= post.title %></h3>
+			<p><%= post.description %></p>
+			<%= link_to "Research", post.researchlink %>
+			<%= link_to "Article", post.articlelink %>
+			<p>Article author: <%= post.articleauth %></p>
+			<p>Research author: <%= post.researchauth %></p>
+			<p>Research date: <%= post.researchdate %></p>
+			<p>Submitter: <%= post.user.name %></p>
+			<p><%= link_to "Read more", post %></p>
+		</div>
+		<% end %>
+	</div>
+</div>

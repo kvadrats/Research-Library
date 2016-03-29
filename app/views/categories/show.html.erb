@@ -7,7 +7,7 @@
   </div>
   <ul>
   	<% @subcategories.each do |subcategory| %>
-  		<li><%= link_to subcategory.name, subcategory %></li>
+  		<li><%= link_to subcategory.name, edit_subcategory_path %></li>
   	<% end %>
   </ul>
 </div>

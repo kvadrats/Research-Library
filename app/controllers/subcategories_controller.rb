@@ -5,16 +5,24 @@ class SubcategoriesController < ApplicationController
 
 	def show
 		@subcategory = Subcategory.find(params[:id])
+    @posts = Post.all.where("subcategory_id = ?", params[:id])
+    @categories = Category.all
+    @subcategories = Subcategory.all
 	end
+
+  def edit
+    @subcategory = Subcategory.find(params[:id])
+  end
 
 	def create
 		@subcategory = Subcategory.new(subcategory_params)
 
-		  if @subcategory.save
+		if @subcategory.save
      		redirect_to :back
-    	else
+    else
       		render :new
-      end
+    end
+
 	end
 
   def destroy
