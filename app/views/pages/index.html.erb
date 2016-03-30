@@ -6,9 +6,9 @@
 		<li><a href="/">Discussed</a></li>
 	</ul>
 
-  <ul class="subjectmenu">
+  <ul class="subjectmenu" data-collapse>
     <% @categories.each do |category| %>
-    <li><%= link_to category.name, category %></li>
+    <li><%= category.name %></li>
       <ul>
       <% @subcategories.each do |subcategory| %>
       	<% next if category.id != subcategory.category_id %>

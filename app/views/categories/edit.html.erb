@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="category">
+  <div class="name">
+    <h3><%= @category.name %></h3><p><%= link_to "Destroy", @category, :confirm => "Are you sure?", :method => :delete %>
+</p>
+  </div>
+  <ul>
+  	<% @subcategories.each do |subcategory| %>
+  		<li><%= link_to subcategory.name, edit_subcategory_path %></li>
+  	<% end %>
+  </ul>
+</div>
+
+<%= render 'subcategory_form' %>
+
+<p><%= link_to "Back to Categories", categories_path %></p>

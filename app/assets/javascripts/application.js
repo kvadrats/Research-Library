@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.collapse
 //= require turbolinks
 //= require global
 //= require_tree .
