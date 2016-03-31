@@ -5,7 +5,14 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users
+  resources :managements do
+    collection do
+      post 'submissions' => 'managements#submissions'
+      get 'submissions' => 'managements#submissions'
+    end
+  end
   resources :categories
+  resources :bookmarks
   resources :subcategories do
     member do
       post 'subscribe' => 'subscriptions#subscribe'

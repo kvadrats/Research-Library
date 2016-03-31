@@ -1,0 +1,4 @@
+	
+<% if current_user.id == @posts.user_id %>
+	<%= render 'posts/posts' %>
+<% end %>

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331092119) do
+ActiveRecord::Schema.define(version: 20160331131400) do
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.string   "list"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bookmarks", ["post_id"], name: "index_bookmarks_on_post_id"
+  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +45,17 @@ ActiveRecord::Schema.define(version: 20160331092119) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "post_lists", force: :cascade do |t|
+    t.string   "list"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "post_lists", ["post_id"], name: "index_post_lists_on_post_id"
+  add_index "post_lists", ["user_id"], name: "index_post_lists_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

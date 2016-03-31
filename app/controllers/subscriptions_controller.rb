@@ -1,17 +1,8 @@
 class SubscriptionsController < ApplicationController
 
   def submanagement
-  	#subcategory = Subcategory.find(params[:id])
-  	#user = current_user
-
   	@categories = Category.all
     @subcategories = Subcategory.all
-
-  	#if user.subcategories << subcategory
-  	#	@subcategories
-  	#else
-
-  	#end
   end
 
   def subscribe

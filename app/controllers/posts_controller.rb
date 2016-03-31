@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  validates :researchlink, :articlelink, uniqueness: true
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   respond_to :js
