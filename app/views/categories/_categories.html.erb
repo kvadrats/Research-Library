@@ -1,0 +1,11 @@
+  <ul class="subjectmenu" data-collapse>
+    <% @categories.each do |category| %>
+    <li><%= category.name %></li>
+      <ul>
+      <% @subcategories.each do |subcategory| %>
+      	<% next if category.id != subcategory.category_id %>
+        <li><%=link_to subcategory.name, subcategory %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </ul>

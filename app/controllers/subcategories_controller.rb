@@ -1,4 +1,6 @@
 class SubcategoriesController < ApplicationController
+  before_action :verify_is_admin, only: [:create, :new, :destroy, :edit]
+
 	def new
 		@subcategory = Subcategory.new
 	end
@@ -35,7 +37,13 @@ class SubcategoriesController < ApplicationController
     end
   end
 
-  def subcategory_params
-    params.require(:subcategory).permit(:name, :category_id)
-  end
+  private
+
+    def verify_is_admin
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
+    end
+
+    def subcategory_params
+      params.require(:subcategory).permit(:name, :category_id)
+    end
 end

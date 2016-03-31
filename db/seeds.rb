@@ -5,14 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 Post.delete_all
 Category.delete_all
 Subcategory.delete_all
-Users.delete_all
 
-User.create(name: 'Kvadrats',
-	email: 'emils.kantans@gmail.com',
-	encrypted_password: '$2a$10$InsjhwgpE.z3jaquAEysaOaaq6IaHpzLwlf8VaMyLotVnCve4ylxq')
+Category.create(name: 'Psychology')
+Category.create(name: 'Neuroscience')
+Category.create(name: 'Physics')
+  
+Subcategory.create(name: "Behavioral Neuroscience", category_id: Category.find_by(name: "Neuroscience").id)
+Subcategory.create(name: "Conciousness", category_id: Category.find_by(name: "Psychology").id)
+Subcategory.create(name: "PSI", category_id: Category.find_by(name: "Psychology").id)
+Subcategory.create(name: "Spaghetti", category_id: Category.find_by(name: "Neuroscience").id)
 
 Post.create(title: 'Use of MDMA in theraphy',
 	description: 'DEA has finally approved the use of MDMA in theraphy, in this journal post we can see why, what are the effects of MDMA.',
@@ -32,12 +37,3 @@ Post.create(title: 'Phantom Vibrations',
 	researchdate: '2012-03-13',
 	subcategory_id: '1',
 	user_id: '1')
-
-Category.create(name: 'Psychology')
-Category.create(name: 'Neuroscience')
-Category.create(name: 'Physics')
-  
-Subcategory.create(name: "Behavioral Neuroscience", category_id: Category.find_by(name: "Neuroscience").id)
-Subcategory.create(name: "Conciousness", category_id: Category.find_by(name: "Psychology").id)
-Subcategory.create(name: "PSI", category_id: Category.find_by(name: "Psychology").id)
-Subcategory.create(name: "Spaghetti", category_id: Category.find_by(name: "Neuroscience").id)
