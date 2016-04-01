@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :managements do
     collection do
-      post 'submissions' => 'managements#submissions'
       get 'submissions' => 'managements#submissions'
     end
   end
