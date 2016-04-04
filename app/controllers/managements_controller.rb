@@ -5,6 +5,6 @@ class ManagementsController < ApplicationController
 	end
 
 	def submissions
-		@posts = Post.where("user_id = ?", current_user.id)
+		@posts = Post.where(user_id: current_user.id)
 	end
 end

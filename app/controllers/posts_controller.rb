@@ -15,8 +15,8 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    #@subcategory = Subcategory.find_by("id = ?", params[:subcategory_id])
-    #@user = User.find_by("id = ?", params[:user_id])
+    @bookmarks = Bookmark.where(user_id: current_user.id).select(:list).map(&:list).uniq
+    @bookmark = Bookmark.new
   end
 
   # GET /posts/new
