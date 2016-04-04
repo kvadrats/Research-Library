@@ -6,4 +6,7 @@
     <%= f.select :list, options_for_select(@bookmarks, 1), {}, id:"bookmark_select" %>
   </div>
 
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :post_id, :value => params[:id] %>
+  <p><%= f.submit "Add to list" %></p>
 <% end %>
