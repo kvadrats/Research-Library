@@ -1,5 +1,5 @@
 <ul class="subjectmenu">
-    <% @bookmarks.each do |bookmark| %>
-    	<li><%= link_to bookmark.list %></li>
+    <% @lists.each do |bookmark| %>
+    	<li><%= link_to bookmark.list, bookmark %></li>
     <% end %>
 </ul>

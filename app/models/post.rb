@@ -3,5 +3,5 @@ class Post < ActiveRecord::Base
 	validates :title, uniqueness: true
 	belongs_to :subcategory
 	belongs_to :user
-	has_and_belongs_to_many :bookmarks
+	has_many :bookmarks
 end
