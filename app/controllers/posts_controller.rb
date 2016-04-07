@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  #validates :researchlink, :articlelink, uniqueness: true
+  #validates :researchlink, uniqueness: true, if: 'researchlink.present?'
+  #validates :articlelink, uniqueness: true, if: 'articlelink.present?'
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   respond_to :js
@@ -7,6 +8,11 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+  if params[:search]
+    @posts = Post.search(params[:search]).order("created_at DESC")
+  else
+    @posts = Post.all.order('created_at DESC')
+  end
     @categories = Category.all.map { |category| [category.name, category.id] }
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
   end

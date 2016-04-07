@@ -1,50 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+  <div class="posts">
 
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
+      <div class="post">
+        <h3><%= @post.title %></h3>
+        <p><%= @post.description %></p>
+        <%= link_to "Research", @post.researchlink %>
+        <%= link_to "Article", @post.articlelink %>
+        <p>Article author: <%= @post.articleauth %></p>
+        <p>Research author: <%= @post.researchauth %></p>
+        <p>Research date: <%= @post.researchdate %></p>
+        <p>Submitter: <%= @post.user.name %></p>
+        <%= render 'bookmarks/select' %>
+        <% if current_user != nil && current_user.admin? or current_user == @post.user %>
+          <%= link_to 'Edit', edit_post_path(@post) %>
+        <% end %>
+        <%= link_to 'Back', :back %>
+      </div>
 
-<p>
-  <strong>Articlelink:</strong>
-  <%= @post.articlelink %>
-</p>
-
-<p>
-  <strong>Researchlink:</strong>
-  <%= @post.researchlink %>
-</p>
-
-<p>
-  <strong>Researchauth:</strong>
-  <%= @post.researchauth %>
-</p>
-
-<p>
-  <strong>Articleauth:</strong>
-  <%= @post.articleauth %>
-</p>
-
-<p>
-  <strong>Researchdate:</strong>
-  <%= @post.researchdate %>
-</p>
-<p>
-  <strong>Subcategory:</strong>
-  <%= @post.subcategory.name %>
-</p>
-<p>
-  <strong>Submitter:</strong>
-  <%= @post.user.name %>
-</p>
-
-<%= render 'bookmarks/select' %>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  </div>

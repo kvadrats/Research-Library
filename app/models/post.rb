@@ -4,4 +4,11 @@ class Post < ActiveRecord::Base
 	belongs_to :subcategory
 	belongs_to :user
 	has_many :bookmarks
+
+
+
+  	def self.search(search)
+  		where("title || description LIKE ?", "%#{search}%") 
+	end
+
 end

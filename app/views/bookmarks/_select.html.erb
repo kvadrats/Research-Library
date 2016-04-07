@@ -1,7 +1,7 @@
   
 <%= form_for @bookmark do |f| %>
 
-  <div class="field">
+  <div class="bookmark-select">
     <%= f.label :list, "Bookmark:" %><br>
     <%= f.select :list, options_for_select(@bookmarks, 1), {}, id:"bookmark_select" %>
   </div>

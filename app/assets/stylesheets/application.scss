@@ -58,6 +58,19 @@
     	background-color: #111;
 	}
 }
+.search-box {
+    right: 3em;
+    top: 7em; 
+    float: right;
+    position: fixed;
+    background-color: #f1f1f1;
+    z-index: 999;
+    display: block;
+    width: 200px;
+    padding: 10px;
+    border: solid #e1e1e1;
+    border-width: 2px 2px;
+}
 
 #userbox {
 	right: 3em;
