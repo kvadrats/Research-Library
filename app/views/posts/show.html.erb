@@ -5,9 +5,6 @@
       <div class="post">
         <h3><%= @post.title %></h3>
         <p><%= @post.description %></p>
-        <%= link_to "Research", @post.researchlink %>
-        <p>Research author: <%= @post.researchauth %></p>
-        <p>Research date: <%= @post.researchdate %></p>
         <p>Submitter: <%= @post.user.name %></p>
         <%= render 'bookmarks/select' %>
         <% if current_user != nil && current_user.admin? or current_user == @post.user %>

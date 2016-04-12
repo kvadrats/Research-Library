@@ -1,0 +1,29 @@
+  <div class="nested-fields">
+    <p>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :link %>
+      <%= f.text_field :link %>
+    </div>
+    <div class="field">
+      <%= f.label :university %>
+      <%= f.text_field :university %>
+    </div>
+    <div class="field">
+      <%= f.label :author %>
+      <%= f.text_field :author %>
+    </div>
+    <div class="field">
+      <%= f.label :researchdate %>
+      <%= f.date_select :researchdate %>
+    </div>
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+    </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= link_to_remove_association "Remove research", f %>
+    </p>

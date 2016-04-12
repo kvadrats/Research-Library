@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411131235) do
+ActiveRecord::Schema.define(version: 20160412132713) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string   "list"
@@ -61,9 +61,6 @@ ActiveRecord::Schema.define(version: 20160411131235) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.text     "researchlink"
-    t.string   "researchauth"
-    t.date     "researchdate"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "subcategory_id"
@@ -72,6 +69,22 @@ ActiveRecord::Schema.define(version: 20160411131235) do
 
   add_index "posts", ["subcategory_id"], name: "index_posts_on_subcategory_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "research_papers", force: :cascade do |t|
+    t.string   "title"
+    t.string   "link"
+    t.string   "university"
+    t.decimal  "price",        precision: 8, scale: 2
+    t.string   "author"
+    t.date     "researchdate"
+    t.integer  "user_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "post_id"
+  end
+
+  add_index "research_papers", ["post_id"], name: "index_research_papers_on_post_id"
+  add_index "research_papers", ["user_id"], name: "index_research_papers_on_user_id"
 
   create_table "subcategories", force: :cascade do |t|
     t.string   "name"

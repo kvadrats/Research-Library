@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users 
   resources :users, only: [:show]
   resources :posts do
+    resources :research_papers
     resources :journal_articles
     collection do
       get 'update_subcategories' => 'posts#update_subcategories'

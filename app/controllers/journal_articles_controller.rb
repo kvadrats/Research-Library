@@ -1,2 +1,0 @@
-class JournalArticlesController < ApplicationController
-end

@@ -3,17 +3,7 @@
 one:
   title: MyString
   description: MyText
-  articlelink: MyText
-  researchlink: MyText
-  researchauth: MyString
-  articleauth: MyString
-  researchdate: 2016-02-23
-
+  
 two:
   title: MyString
   description: MyText
-  articlelink: MyText
-  researchlink: MyText
-  researchauth: MyString
-  articleauth: MyString
-  researchdate: 2016-02-23

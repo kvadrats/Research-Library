@@ -11,7 +11,6 @@
       </ul>
     </div>
   <% end %>
-
     <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="field">
     <%= f.label :title, "Title:" %><br>
@@ -22,18 +21,6 @@
     <%= f.text_area :description, rows: 6, class: 'input-field' %>
   </div>
   <div class="field">
-    <%= f.label :researchlink, "Link to research:" %><br>
-    <%= f.text_area :researchlink, class: 'input-field' %>
-  </div>
-  <div class="field">
-    <%= f.label :researchauth, "Research author:" %><br>
-    <%= f.text_field :researchauth, class: 'input-field' %>
-  </div>
-  <div class="field">
-    <%= f.label :researchdate, "Research date:" %><br>
-    <%= f.date_select :researchdate, class: 'input-field' %>
-  </div>
-  <div class="field">
     <%= f.label :id, "Category:" %><br>
     <%= f.select :id, options_for_select(@categories, 1), {}, id:"category_select" %>
   </div>
@@ -41,6 +28,15 @@
     <%= f.label :subcategory_id, "Subcategory:" %><br>
     <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
     [subcategory.name.titleize, subcategory.id]}, 0), {}, id: "subcategory_select" %>
+  </div>
+  <h3>Research Papers</h3>
+  <div id="research-fields">
+    <%= f.fields_for :research_papers do |research| %>
+      <%= render 'research_paper_fields', f: research %>
+    <% end %>
+    <div class="links">
+    <%= link_to_add_association 'add research', f, :research_papers %>
+    </div>
   </div>
   <h3>Journal Articles</h3>
   <div id="article-fields">
