@@ -8,13 +8,14 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+
   if params[:search]
     @posts = Post.search(params[:search]).order("created_at DESC")
   else
     @posts = Post.all.order('created_at DESC')
   end
-    @categories = Category.all.map { |category| [category.name, category.id] }
-    @subcategories = Subcategory.where("category_id = ?", Category.first.id)
+      @categories = Category.all
+      @subcategories = Subcategory.all
   end
 
   # GET /posts/1
@@ -30,7 +31,6 @@ class PostsController < ApplicationController
     @post = Post.new
     @categories = Category.all.map { |category| [category.name, category.id] }
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
-    #@subcategories = ""
   end
 
   # GET /posts/1/edit
@@ -105,7 +105,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :title, :description, :articlelink, :researchlink, :researchauth, :articleauth, :researchdate, :subcategory_id)
+      params.require(:post).permit(:user_id, :title, :description, :researchlink, :researchauth, :researchdate, :subcategory_id, journal_articles_attributes: [:id, :title, :link, :author, :articledate, :user_id, :_destroy])
     end
 
 end

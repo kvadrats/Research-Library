@@ -17,3 +17,4 @@
 //= require turbolinks
 //= require global
 //= require_tree .
+//= require cocoon

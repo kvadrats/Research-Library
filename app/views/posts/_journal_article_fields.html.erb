@@ -1,0 +1,21 @@
+  <div class="nested-fields">
+    <p>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :link %>
+      <%= f.text_field :link %>
+    </div>
+    <div class="field">
+      <%= f.label :author %>
+      <%= f.text_field :author %>
+    </div>
+    <div class="field">
+      <%= f.label :articledate %>
+      <%= f.date_select :articledate %>
+    </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= link_to_remove_association "Remove article", f %>
+    </p>

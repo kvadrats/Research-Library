@@ -22,20 +22,12 @@
     <%= f.text_area :description, rows: 6, class: 'input-field' %>
   </div>
   <div class="field">
-    <%= f.label :articlelink, "Link to article:" %><br>
-    <%= f.text_area :articlelink, class: 'input-field' %>
-  </div>
-  <div class="field">
     <%= f.label :researchlink, "Link to research:" %><br>
     <%= f.text_area :researchlink, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :researchauth, "Research author:" %><br>
     <%= f.text_field :researchauth, class: 'input-field' %>
-  </div>
-  <div class="field">
-    <%= f.label :articleauth, "Article author:" %><br>
-    <%= f.text_field :articleauth, class: 'input-field' %>
   </div>
   <div class="field">
     <%= f.label :researchdate, "Research date:" %><br>
@@ -49,7 +41,15 @@
     <%= f.label :subcategory_id, "Subcategory:" %><br>
     <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
     [subcategory.name.titleize, subcategory.id]}, 0), {}, id: "subcategory_select" %>
-
+  </div>
+  <h3>Journal Articles</h3>
+  <div id="article-fields">
+  <%= f.fields_for :journal_articles do |article| %>
+    <%= render 'journal_article_fields', f: article %>
+  <% end %>
+  </div>
+  <div class="links">
+    <%= link_to_add_association 'add article', f,  :journal_articles %>
   </div>
   <div class="actions">
     <%= f.submit %>

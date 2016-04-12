@@ -4,6 +4,9 @@ class Post < ActiveRecord::Base
 	belongs_to :subcategory
 	belongs_to :user
 	has_many :bookmarks
+	has_many :journal_articles, :dependent => :destroy
+
+	accepts_nested_attributes_for :journal_articles, reject_if: proc { |attributes| attributes['link'].blank? }, allow_destroy: true
 
 
 

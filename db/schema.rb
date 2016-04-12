@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331131400) do
+ActiveRecord::Schema.define(version: 20160411131235) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string   "list"
@@ -46,24 +46,23 @@ ActiveRecord::Schema.define(version: 20160331131400) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
-  create_table "post_lists", force: :cascade do |t|
-    t.string   "list"
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "journal_articles", force: :cascade do |t|
+    t.string  "title"
+    t.string  "link"
+    t.string  "author"
+    t.date    "articledate"
+    t.integer "user_id"
+    t.integer "post_id"
   end
 
-  add_index "post_lists", ["post_id"], name: "index_post_lists_on_post_id"
-  add_index "post_lists", ["user_id"], name: "index_post_lists_on_user_id"
+  add_index "journal_articles", ["post_id"], name: "index_journal_articles_on_post_id"
+  add_index "journal_articles", ["user_id"], name: "index_journal_articles_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.text     "articlelink"
     t.text     "researchlink"
     t.string   "researchauth"
-    t.string   "articleauth"
     t.date     "researchdate"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

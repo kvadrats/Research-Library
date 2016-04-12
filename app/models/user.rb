@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_and_belongs_to_many :subcategories
   has_many :bookmarks
+  has_many :journal_articles
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable, :zxcvbnable
