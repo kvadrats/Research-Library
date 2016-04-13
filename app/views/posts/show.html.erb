@@ -6,6 +6,44 @@
         <h3><%= @post.title %></h3>
         <p><%= @post.description %></p>
         <p>Submitter: <%= @post.user.name %></p>
+        <h3>Journal articles:</h3>
+        <% if @articles.exists? %>
+          <%= render 'journal_articles' %>
+        <% else %>
+          <p>There are no relevant journal articles submitted for this post if you would like to add some: </p>
+          <%= form_for @post do |f| %>
+            <div id="article-fields">
+              <%= f.fields_for :journal_articles do |article| %>
+                <%= render 'journal_article_fields', f: article %>
+              <% end %>
+            </div>
+            <div class="links">
+              <%= link_to_add_association 'add article', f,  :journal_articles %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <% end %>
+        <% end %>
+        <h3>Research papers:</h3>
+        <% if @researches.exists? %>
+          <%= render 'research_papers' %>
+        <% else %>
+          <p>There are no relevant research papers submitted for this post if you would like to add some: </p>
+          <%= form_for @post do |f| %>
+            <div id="research-fields">
+              <%= f.fields_for :research_papers do |research| %>
+                <%= render 'research_paper_fields', f: research %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association 'add research', f, :research_papers %>
+              </div>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <% end %>
+        <% end %>
         <%= render 'bookmarks/select' %>
         <% if current_user != nil && current_user.admin? or current_user == @post.user %>
           <%= link_to 'Edit', edit_post_path(@post) %>

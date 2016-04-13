@@ -1,0 +1,11 @@
+<div class="articles">
+	<% @articles.each do |article| %>
+		<div class="article">
+			<p>Article: <%= article.title %></p>
+			<a>Link: <%= article.link %></a>
+			<p>Author: <%= article.author %></p>
+			<p>Release date: <%= article.articledate %></p>
+			<p>Submitter: <%= article.user.name %></p>
+		</div>
+	<% end %>
+</div>

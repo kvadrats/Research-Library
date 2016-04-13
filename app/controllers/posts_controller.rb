@@ -24,6 +24,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @bookmarks = Bookmark.where(user_id: current_user.id).select(:list).map(&:list).uniq
     @bookmark = Bookmark.new
+    @articles = @post.journal_articles
+    @researches = @post.research_papers
   end
 
   # GET /posts/new
@@ -47,15 +49,15 @@ class PostsController < ApplicationController
     @categories = Category.all
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
 
-    #respond_to do |format|
+    respond_to do |format|
       if @post.save
         redirect_to @post, notice: 'Post was successfully created.'
-        #format.json { render :show, status: :created, location: @post }
+        format.json { render :show, status: :created, location: @post }
       else
         render :new
-        #format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
-    #end
+    end
   end
 
   # PATCH/PUT /posts/1

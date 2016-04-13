@@ -1,0 +1,13 @@
+<div class="researches">
+	<% @researches.each do |research| %>
+		<div class="research">
+			<p>Research: <%= research.title %></p>
+			<a>Link: <%= research.link %></a>
+			<p>Price: <%= research.price %></p>
+			<p>University: <%= research.university %></p>
+			<p>Author: <%= research.author %></p>
+			<p>Release date: <%= research.researchdate %></p>
+			<p>Submitter: <%= research.user.name %></p>
+		</div>
+	<% end %>
+</div>
