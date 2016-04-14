@@ -26,6 +26,7 @@ class PostsController < ApplicationController
     @bookmark = Bookmark.new
     @articles = @post.journal_articles
     @researches = @post.research_papers
+    #@user_research_papers = @post.research_papers.where(:user_id => current_user.id)
   end
 
   # GET /posts/new
