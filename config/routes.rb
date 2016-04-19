@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users, only: [:show]
+  resources :comments
   resources :posts do
     resources :research_papers
     resources :journal_articles

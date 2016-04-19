@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
 	has_many :bookmarks
 	has_many :journal_articles, :dependent => :destroy
 	has_many :research_papers, :dependent => :destroy
+	has_many :comments, :dependent => :destroy
 
 	accepts_nested_attributes_for :research_papers, reject_if: proc { |attributes| attributes['link'].blank? }, allow_destroy: true
 	accepts_nested_attributes_for :journal_articles, reject_if: proc { |attributes| attributes['link'].blank? }, allow_destroy: true

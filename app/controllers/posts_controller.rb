@@ -9,13 +9,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-  if params[:search]
-    @posts = Post.search(params[:search]).order("created_at DESC")
-  else
-    @posts = Post.all.order('created_at DESC')
-  end
-      @categories = Category.all
-      @subcategories = Subcategory.all
+    if params[:search]
+      @posts = Post.search(params[:search]).order("created_at DESC")
+    else
+      @posts = Post.all.order('created_at DESC')
+    end
+    @categories = Category.all
+    @subcategories = Subcategory.all
   end
 
   # GET /posts/1
@@ -24,8 +24,26 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @bookmarks = Bookmark.where(user_id: current_user.id).select(:list).map(&:list).uniq
     @bookmark = Bookmark.new
-    @articles = @post.journal_articles
-    @researches = @post.research_papers
+    @journal_articles = @post.journal_articles
+    @research_papers = @post.research_papers
+    @comments = @post.comments.where(post_id = params[:id])
+    @comment = Comment.new
+
+
+    #@journal_articles.build
+    #@post_new = Post.new
+    #@post.research_papers.user_id = User.find(current_user.id)
+    #@post.id = Post.find(params[:id])
+
+
+    #respond_to do |format|
+     # if @post.save
+     #   redirect_to @post, notice: 'Post was successfully updated'
+     # else 
+     #   render :new
+     #   format.json { render json: @post.errors, status: :unprocessable_entity }
+      #end
+    #end
     #@user_research_papers = @post.research_papers.where(:user_id => current_user.id)
   end
 
@@ -41,6 +59,21 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @categories = Category.all.map { |category| [category.name, category.id] }
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
+  end
+
+  def add
+    @user = User.find(current_user)
+    @post.id = Post.find(params[:id])
+    @post_new = Post.new(post_params)
+
+    respond_to do |format|
+      if @post.save
+        redirect_to @post, notice: 'Post was successfully updated'
+      else 
+        render :new
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /posts
@@ -90,6 +123,7 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
     def update_subcategories
       @subcategories = Subcategory.where("category_id = ?", params[:category_id])
       respond_to do |format|
@@ -109,5 +143,4 @@ class PostsController < ApplicationController
                                    journal_articles_attributes: [:id, :title, :link, :author, :articledate, :user_id, :_destroy],
                                    research_papers_attributes: [:id, :title, :link, :university, :price, :author, :researchdate, :user_id, :_destroy] )
     end
-
 end
