@@ -15,9 +15,10 @@
 //= require jquery_ujs
 //= require jquery.collapse
 //= require turbolinks
+//= require cocoon
+//= require bootstrap
 //= require global
 //= require_tree .
-//= require cocoon
 
 
   window.fbAsyncInit = function() {

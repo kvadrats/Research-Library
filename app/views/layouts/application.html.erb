@@ -7,17 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="menu">
-    <ul>
-      <li><a href="/"><%= image_tag("logo.png") %>></a></li>
-      <li><a href="/">Front Page</a></li>
-      <li><a href="/">Journal Posts</a></li>
-      <li><a href="/">User Papers</a></li>
-      <li><a href="/">Book Recommendations</a></li>
-      <li><a href="/">Skill learning</a></li>
-      <li><a href="/">Requests</a></li>
-    </ul>
-  </div>
+  <div id="main-container" class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="app-navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="#"><%= image_tag("logo.png", alt: "Brand") %></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Front Page</a></li>
+            <li><a href="/">Journal Posts</a></li>
+            <li><a href="/">User Papers</a></li>
+            <li><a href="/">Book Recommendations</a></li>
+            <li><a href="/">Skill learning</a></li>
+            <li><a href="/">Requests</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 	<div class="container">
   		<% flash.each do |key, value| %>
     		<div class="alert alert-<%= key %>">
@@ -48,7 +64,7 @@
       <li><%=link_to 'Secret', secret_path %></li>
     <% end %>
   </ul>
-  <ul class="nav navbar-nav pull-right">
+  <ul class="nav navbar-nav navbar-fixed-right">
     <% if user_signed_in? %>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -71,6 +87,7 @@
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
         <% end %>
   </ul>
+</div>
 </div>
 </body>
 </html>
