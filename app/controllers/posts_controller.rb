@@ -37,12 +37,12 @@ class PostsController < ApplicationController
 
 
     #respond_to do |format|
-     # if @post.save
-     #   redirect_to @post, notice: 'Post was successfully updated'
-     # else 
-     #   render :new
-     #   format.json { render json: @post.errors, status: :unprocessable_entity }
-      #end
+    # if @post.save
+    #   redirect_to @post, notice: 'Post was successfully updated'
+    # else
+    #   render :new
+    #   format.json { render json: @post.errors, status: :unprocessable_entity }
+    #end
     #end
     #@user_research_papers = @post.research_papers.where(:user_id => current_user.id)
   end
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         redirect_to @post, notice: 'Post was successfully updated'
-      else 
+      else
         render :new
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -124,23 +124,23 @@ class PostsController < ApplicationController
     end
   end
 
-    def update_subcategories
-      @subcategories = Subcategory.where("category_id = ?", params[:category_id])
-      respond_to do |format|
-        format.js
-        #format.html { render(:partial => @subcategories) }
-      end
+  def update_subcategories
+    @subcategories = Subcategory.where("category_id = ?", params[:category_id])
+    respond_to do |format|
+      format.js
+      #format.html { render(:partial => @subcategories) }
     end
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
 
-    end
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:user_id, :title, :description, :subcategory_id, 
-                                   journal_articles_attributes: [:id, :title, :link, :author, :articledate, :user_id, :_destroy],
-                                   research_papers_attributes: [:id, :title, :link, :university, :price, :author, :researchdate, :user_id, :_destroy] )
-    end
+  end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:user_id, :title, :description, :subcategory_id,
+                                 journal_articles_attributes: [:id, :title, :link, :author, :articledate, :user_id, :_destroy],
+                                 research_papers_attributes: [:id, :title, :link, :university, :price, :author, :researchdate, :user_id, :_destroy] )
+  end
 end

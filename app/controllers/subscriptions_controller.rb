@@ -1,26 +1,26 @@
 class SubscriptionsController < ApplicationController
 
   def submanagement
-  	@categories = Category.all
+    @categories = Category.all
     @subcategories = Subcategory.all
   end
 
   def subscribe
-  	subcategory = Subcategory.find(params[:id])
-  	user = current_user
+    subcategory = Subcategory.find(params[:id])
+    user = current_user
 
-  	user.subcategories << subcategory
-  	user.save
-  	redirect_to :back
+    user.subcategories << subcategory
+    user.save
+    redirect_to :back
 
   end
 
   def unsubscribe
-  	subcategory = Subcategory.find(params[:id])
-  	user = current_user
+    subcategory = Subcategory.find(params[:id])
+    user = current_user
 
-  	user.subcategories.delete(subcategory)
-  	redirect_to :back
+    user.subcategories.delete(subcategory)
+    redirect_to :back
   end
 
 

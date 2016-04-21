@@ -1,24 +1,24 @@
 class BookmarksController < ApplicationController
 
   def index
-  	@lists = Bookmark.where(user_id: current_user.id).where(post_id: nil)
+    @lists = Bookmark.where(user_id: current_user.id).where(post_id: nil)
   end
 
   def new
-	@bookmark = Bookmark.new
+    @bookmark = Bookmark.new
   end
 
   def destroy
-  	@list = Bookmark.find(params[:id])
-  	@bookmarks = Bookmark.where(:list => @list.list)
+    @list = Bookmark.find(params[:id])
+    @bookmarks = Bookmark.where(:list => @list.list)
 
     if @bookmarks.destroy_all
-    	redirect_to bookmarks_url
+      redirect_to bookmarks_url
     end
   end
 
   def show
-  	@lists = Bookmark.where(user_id: current_user.id).where(post_id: nil)
+    @lists = Bookmark.where(user_id: current_user.id).where(post_id: nil)
     @list = Bookmark.find(params[:id])
     @bookmarks = Bookmark.where.not(post_id: nil).where(list: @list.list)
     @posts = Post.where(:id => @bookmarks.map(&:post_id))
@@ -34,7 +34,7 @@ class BookmarksController < ApplicationController
   end
 
   def bookmark_params
-  	params.require(:bookmark).permit(:list, :user_id, :post_id)
+    params.require(:bookmark).permit(:list, :user_id, :post_id)
   end
 
 end
