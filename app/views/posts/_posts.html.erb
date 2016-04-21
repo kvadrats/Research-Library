@@ -1,6 +1,5 @@
-	<div class="posts">
 		<% @posts.each do |post| %>
-			<div class="post">
+			<div id="post">
 				<h3><%= post.title %></h3>
 				<p><%= post.description %></p>
 				<p>Submitter: <%= post.user.name %></p>
@@ -10,4 +9,3 @@
 				<% end %>
 			</div>
 		<% end %>
-	</div>
