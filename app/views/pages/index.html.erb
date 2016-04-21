@@ -1,18 +1,8 @@
-<div class="frontpage">
-	<ul class="tabmenu">
-		<li><a class="active" href="/">New</a></li>
-		<li><a href="/">Something</a></li>
-		<li><a href="/">Top</a></li>
-		<li><a href="/">Discussed</a></li>
-	</ul>
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
-
-	<%= render 'categories/categories' %>
-	
-	<%= render 'posts/posts' %>
-</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<%= render 'categories/categories' %>
+			</div>
+			<div class="col-xs-6" id="posts">
+				<%= render 'posts/posts' %>
+			</div>
+		</div>

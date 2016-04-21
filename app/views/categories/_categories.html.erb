@@ -1,11 +1,23 @@
-  <ul class="subjectmenu" data-collapse>
-    <% @categories.each do |category| %>
-    <li><%= category.name %></li>
-      <ul>
+
+<div class="panel-group" id="subjectmenu">
+  <% @categories.each do |category| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#subjectmenu" href="#<%= category.name %>"><%= category.name %></a>
+        </h4>
+      </div>
       <% @subcategories.each do |subcategory| %>
-      	<% next if category.id != subcategory.category_id %>
-        <li><%=link_to subcategory.name, subcategory %></li>
+      <% next if category.id != subcategory.category_id %>
+        <div id="<%= category.name %>" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <%=link_to subcategory.name, subcategory %>
+          </div>
+        </div>
       <% end %>
-      </ul>
-    <% end %>
-  </ul>
+    </div>
+  <% end %>
+</div>
+
+
+
