@@ -1,26 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<% if current_user != nil %>
-	<div class="subcategory-options">
-		<% if current_user.subcategories.find_by(id: @subcategory) %>
-			<%= button_to( "Unsubscribe", unsubscribe_subcategory_path(@subcategory))%>
-		<% else %>
-			<%= button_to( "Subscribe", subscribe_subcategory_path(@subcategory))%>
-		<% end %>
+<div class="row">
+	<div class="col-xs-3">
+		<%= render 'categories/categories' %>
 	</div>
-<% end %>
-
-
-
-<div class="frontpage">
-	<ul class="tabmenu">
-		<li><a class="active" href="/">New</a></li>
-		<li><a href="/">Something</a></li>
-		<li><a href="/">Top</a></li>
-		<li><a href="/">Discussed</a></li>
-	</ul>
-
-	<%= render 'categories/categories' %>
-	
-	<%= render 'posts/posts' %>
+	<div class="col-xs-6" id="posts">
+		<%= render 'posts/posts' %>
+	</div>
 </div>
