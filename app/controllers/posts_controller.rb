@@ -22,8 +22,10 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    if user_signed_in?
     @bookmarks = Bookmark.where(user_id: current_user.id).select(:list).map(&:list).uniq
     @bookmark = Bookmark.new
+    end
     @journal_articles = @post.journal_articles
     @research_papers = @post.research_papers
     @comments = @post.comments.where(post_id = params[:id])

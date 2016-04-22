@@ -11,6 +11,7 @@
           <%= render 'journal_articles' %>
         <% else %>
           <p>There are no relevant journal articles submitted for this post if you would like to add some: </p>
+          <% if user_signed_in? %>
           <%= form_for @post do |f| %>
           <div id="article-fields">
             <%= f.fields_for :journal_articles do |article| %>
@@ -23,6 +24,7 @@
           <div class="actions">
             <%= f.submit %>
           </div>
+          <% end %>
         <% end %>
         <% end %>
         <h3>Research papers:</h3>
@@ -30,6 +32,7 @@
           <%= render 'research_papers' %>
         <% else %>
           <p>There are no relevant research papers submitted for this post if you would like to add some: </p>
+          <% if user_signed_in? %>
           <%= form_for @post do |f| %>
           <div id="research-fields">
             <%= f.fields_for :research_papers do |research| %>
@@ -42,9 +45,12 @@
           <div class="actions">
             <%= f.submit %>
           </div>
+          <% end %>
         <% end %>
         <% end %>
-        <%= render 'bookmarks/select' %>
+        <% if user_signed_in? %>
+          <%= render 'bookmarks/select' %>
+        <% end %>
         <% if current_user != nil && current_user.admin? or current_user == @post.user %>
           <%= link_to 'Edit', edit_post_path(@post) %>
         <% end %>
@@ -54,7 +60,7 @@
       <% @comments.each do |comment| %>
         <p><%= comment.comment %></p>
       <% end %>
-
+      <% if user_signed_in? %>
         <%= form_for @comment do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :post_id, :value => params[:id] %>
@@ -62,6 +68,7 @@
           <%= f.text_field :comment %>
 
           <%= f.submit %>
+          <% end %>
         <% end %>
       </div>
   </div>
