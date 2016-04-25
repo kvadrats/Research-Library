@@ -31,7 +31,7 @@
   </div>
   <h3>Research Papers</h3>
   <div id="research-fields">
-    <%= f.fields_for :research_papers, do |research| %>
+    <%= f.fields_for :research_papers do |research| %>
       <%= render 'research_paper_fields', f: research %>
     <% end %>
     <div class="links">
