@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'posts' %>
-
-<%= render 'categories/categories' %>
+		<div class="row">
+			<div class="col-xs-3">
+				<%= render 'categories/categories' %>
+			</div>
+			<div class="col-xs-6" id="posts">
+				<%= render 'posts' %>
+			</div>
+		</div>

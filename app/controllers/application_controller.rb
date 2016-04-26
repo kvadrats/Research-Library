@@ -5,12 +5,11 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def search 
-  	
+  def verify_is_admin
+    (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
   end
 
   protected
-
 
 	def configure_permitted_parameters
   		devise_parameter_sanitizer.for(:sign_up) << :name

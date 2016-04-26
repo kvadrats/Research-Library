@@ -20,15 +20,16 @@
     <%= f.label :description, "Short description:" %><br>
     <%= f.text_area :description, rows: 6, class: 'input-field' %>
   </div>
-  <div class="field">
+  <div class="field select-field">
     <%= f.label :id, "Category:" %><br>
     <%= f.select :id, options_for_select(@categories, 1), {}, id:"category_select" %>
   </div>
-  <div class="field">
+  <div class="field select-field">
     <%= f.label :subcategory_id, "Subcategory:" %><br>
     <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
     [subcategory.name.titleize, subcategory.id]}, 0), {}, id: "subcategory_select" %>
   </div>
+  <div class="research-form">
   <h3>Research Papers</h3>
   <div id="research-fields">
     <%= f.fields_for :research_papers do |research| %>
@@ -38,6 +39,8 @@
     <%= link_to_add_association 'add research', f, :research_papers %>
     </div>
   </div>
+  </div>
+  <div class="article-form">
   <h3>Journal Articles</h3>
   <div id="article-fields">
   <%= f.fields_for :journal_articles do |article| %>
@@ -46,6 +49,7 @@
   </div>
   <div class="links">
     <%= link_to_add_association 'add article', f,  :journal_articles %>
+  </div>
   </div>
   <div class="actions">
     <%= f.submit %>
