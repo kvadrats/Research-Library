@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def index
     @posts = Post.order(:created_at)
-    @categories = Category.all
-    @subcategories = Subcategory.all
+    @allcategories = Category.all
+    @allsubcategories = Subcategory.all
   end
 
 end

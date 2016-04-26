@@ -1,6 +1,6 @@
 
 <div class="panel-group" id="subjectmenu">
-  <% @categories.each do |category| %>
+  <% @allcategories.each do |category| %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -9,7 +9,7 @@
     </div>
     <div id="<%= category.name %>" class="panel-collapse collapse">
       <ul class="list-group">
-        <% @subcategories.each do |subcategory| %>
+        <% @allsubcategories.each do |subcategory| %>
         <% next if category.id != subcategory.category_id %>
         <li class="list-group-item"><%=link_to subcategory.name, subcategory %></li>
       </ul>

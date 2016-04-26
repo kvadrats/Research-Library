@@ -14,8 +14,8 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.order('created_at DESC')
     end
-    @categories = Category.all
-    @subcategories = Subcategory.all
+    @allcategories = Category.all
+    @allsubcategories = Subcategory.all
   end
 
   # GET /posts/1
@@ -31,6 +31,8 @@ class PostsController < ApplicationController
     @comments = @post.comments.where(post_id = params[:id])
     @comment = Comment.new
 
+    @allcategories = Category.all
+    @allsubcategories = Subcategory.all
 
     #@journal_articles.build
     #@post_new = Post.new
@@ -54,6 +56,8 @@ class PostsController < ApplicationController
     @post = Post.new
     @categories = Category.all.map { |category| [category.name, category.id] }
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
+    @allcategories = Category.all
+    @allsubcategories = Subcategory.all
   end
 
   # GET /posts/1/edit
@@ -61,6 +65,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @categories = Category.all.map { |category| [category.name, category.id] }
     @subcategories = Subcategory.where("category_id = ?", Category.first.id)
+    @allcategories = Category.all
+    @allsubcategories = Subcategory.all
   end
 
   def add
