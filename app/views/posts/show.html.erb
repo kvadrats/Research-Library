@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
-
-  <div class="posts">
+<div class="container">
+  <div class="posts center_div">
 
       <div class="post">
-        <h3><%= @post.title %></h3>
-        <p><%= @post.description %></p>
-        <p>Submitter: <%= @post.user.name %></p>
+        <h3 class="show-field"><%= @post.title %></h3>
+        <p class="show-field"><%= @post.description %></p>
+        <p class="show-field">Submitter: <%= @post.user.name %></p>
+        <div class="journal-articles">
         <h3>Journal articles:</h3>
         <% if @journal_articles.exists? %>
           <%= render 'journal_articles' %>
@@ -27,6 +28,7 @@
           <% end %>
         <% end %>
         <% end %>
+        </div>
         <h3>Research papers:</h3>
         <% if @research_papers.exists? %>
           <%= render 'research_papers' %>
@@ -72,3 +74,4 @@
         <% end %>
       </div>
   </div>
+</div>
