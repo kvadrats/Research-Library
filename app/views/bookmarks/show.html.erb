@@ -1,8 +1,10 @@
 		<div class="row">
 			<div class="col-xs-3">
+				<div class="affix">
 				<h3>Your bookmark lists:</h3>
 				<%= render 'listnames' %><br>
 				<%= link_to 'Destroy list', @list, method: :delete %>
+				</div>
 			</div>
 			<div class="col-xs-6" id="posts">
 				<h3><%= @list.list %>:</h3>
