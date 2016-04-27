@@ -8,8 +8,8 @@ class SubcategoriesController < ApplicationController
   def show
     @subcategory = Subcategory.find(params[:id])
     @posts = Post.all.where("subcategory_id = ?", params[:id])
-    @categories = Category.all
-    @subcategories = Subcategory.all
+    @allcategories = Category.all
+    @allsubcategories = Subcategory.all
   end
 
   def edit

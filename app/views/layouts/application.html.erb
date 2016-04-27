@@ -58,48 +58,45 @@
             </div>
           </div>
           <div class="affix" id="userbox">
-            <ul class="nav navbar-nav">
-              <li><%= link_to 'Home', root_path %></li>
-              <% if user_signed_in? %>
-              <li><%=link_to 'Secret', secret_path %></li>
-              <% end %>
-            </ul>
             <ul class="nav navbar-nav navbar-fixed-right">
               <% if user_signed_in? %>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <%= current_user.name %>
+                  Page management
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                   <% if current_user.admin? %>
                   <li><%= link_to 'Category management', categories_path %></li>
                   <% end %>
-                  <li><%= link_to 'Page management', managements_path %></li>
-                  <li><%= link_to "mylink", current_user %></li>
-                  <li><%= link_to 'Profile', edit_user_registration_path %></li>
-                  <li><%= link_to 'Submit a post', new_post_path %></li>
-                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+                  <li><%= link_to 'Edit login informtion', edit_user_registration_path %></li>
+                  <li><%= link_to 'My submissions', submissions_managements_path %></li>
+                  <li><%= link_to 'Subscription management' %></li>
+                  <li><%= link_to 'Contact admin' %></li>
                 </ul>
               </li>
+              <li><%= link_to current_user.name, current_user %></li>
+              <li><%= link_to 'Submit a post', new_post_path %></li>
+              <li><%= link_to 'Lists', bookmarks_path %></li>
+              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+            </ul>
               <% else %>
               <li><%= link_to 'Log In', new_user_session_path %></li>
               <li><%= link_to 'Sign Up', new_user_registration_path %></li>
               <% end %>
-            </ul>
             <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
           </div>
           <div class="affix" id="subscribe-button">
             <% if controller.controller_name == "subcategories" %>
-              <% if current_user != nil %>
-                <div class="subcategory-options">
-                  <% if current_user.subcategories.find_by(id: @subcategory) %>
-                  <%= button_to( "Unsubscribe", unsubscribe_subcategory_path(@subcategory))%>
-                  <% else %>
-                  <%= button_to( "Subscribe", subscribe_subcategory_path(@subcategory))%>
-                  <% end %>
-                </div>
+            <% if current_user != nil %>
+            <div class="subcategory-options">
+              <% if current_user.subcategories.find_by(id: @subcategory) %>
+              <%= button_to( "Unsubscribe", unsubscribe_subcategory_path(@subcategory))%>
+              <% else %>
+              <%= button_to( "Subscribe", subscribe_subcategory_path(@subcategory))%>
               <% end %>
+            </div>
+            <% end %>
             <% end %>
           </div>
         </div>
