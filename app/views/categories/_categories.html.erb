@@ -11,9 +11,9 @@
       <ul class="list-group">
         <% @allsubcategories.each do |subcategory| %>
         <% next if category.id != subcategory.category_id %>
-        <li class="list-group-item"><%=link_to subcategory.name, subcategory %></li>
+          <li class="list-group-item"><%=link_to subcategory.name, subcategory %></li>
+        <% end %>
       </ul>
-      <% end %>
     </div>
   </div>
   <% end %>

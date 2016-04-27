@@ -21,11 +21,11 @@
     <%= f.text_area :description, rows: 6, class: 'input-field' %>
   </div>
   <div class="field select-field">
-    <%= f.label :id, "Category:" %><br>
+    <p> Select category: </p>
     <%= f.select :id, options_for_select(@categories, 1), {}, id:"category_select" %>
   </div>
   <div class="field select-field">
-    <%= f.label :subcategory_id, "Subcategory:" %><br>
+    <p> Select subcategory: </p>
     <%= f.select :subcategory_id, options_for_select(@subcategories.collect { |subcategory|
     [subcategory.name.titleize, subcategory.id]}, 0), {}, id: "subcategory_select" %>
   </div>

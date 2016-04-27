@@ -1,5 +1,4 @@
   <div class="nested-fields">
-    <p>
     <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -16,8 +15,8 @@
       <%= f.label :author %>
       <%= f.text_field :author %>
     </div>
-    <div class="field">
-      <%= f.label :researchdate %>
+    <div class="field select-field">
+      <p> Date that the research was released: </p>
       <%= f.date_select :researchdate %>
     </div>
     <div class="field">
@@ -26,4 +25,4 @@
     </div>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= link_to_remove_association "Remove research", f %>
-    </p>
+  </div>
