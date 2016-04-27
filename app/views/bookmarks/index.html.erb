@@ -1,5 +1,9 @@
-<h3>Your bookmark lists</h3>
-
-<%= render 'listnames' %>
-
-<%= link_to 'New list', new_bookmark_path %>
+		<div class="row">
+			<div class="col-xs-3">
+				<h3>Your bookmark lists:</h3>
+				<%= render 'listnames' %>
+			</div>
+			<div class="col-xs-6" id="posts">
+				<%= render 'posts/posts' %>
+			</div>
+		</div>

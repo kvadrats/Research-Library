@@ -11,7 +11,16 @@
       <ul class="list-group">
         <% @allsubcategories.each do |subcategory| %>
         <% next if category.id != subcategory.category_id %>
+        <% if current_user != nil %>
+          <% if current_user.subcategories.ids == subcategory.id %>
+          <li class="list-group-item active"><%= link_to subcategory.name, subcategory %></li>
+          <% else %>
+          <li class="list-group-item"><%= link_to subcategory.name, subcategory %></li>        
+          <% end %>
+        <% else %>
           <li class="list-group-item"><%=link_to subcategory.name, subcategory %></li>
+        <% end %>
+        <!--     @subscriptions = current_user.subcategories.ids-->  
         <% end %>
       </ul>
     </div>

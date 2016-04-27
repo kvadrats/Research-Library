@@ -2,6 +2,8 @@ class BookmarksController < ApplicationController
 
   def index
     @lists = Bookmark.where(user_id: current_user.id).where(post_id: nil)
+    @bookmarks = Bookmark.where(user_id: current_user.id).where.not(post_id: nil)
+    @posts = Post.where(:id => @bookmarks.map(&:post_id)).where(user_id: current_user.id)
   end
 
   def new

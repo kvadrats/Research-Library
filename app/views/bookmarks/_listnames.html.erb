@@ -1,5 +1,8 @@
-<ul class="subjectmenu">
-    <% @lists.each do |bookmark| %>
-    	<li><%= link_to bookmark.list, bookmark %></li>
-    <% end %>
-</ul>
+<div class="container" id="subjectmenu">
+	<ul class="nav nav-pills nav-stacked">
+		<% @lists.each do |bookmark| %>
+		<li><%= link_to bookmark.list, bookmark %></li>
+		<% end %>
+		<li><%= link_to 'New list', new_bookmark_path %></li>
+	</ul>
+</div>

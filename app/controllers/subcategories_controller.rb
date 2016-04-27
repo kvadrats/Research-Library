@@ -39,10 +39,6 @@ class SubcategoriesController < ApplicationController
 
   private
 
-  def verify_is_admin
-    (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
-  end
-
   def subcategory_params
     params.require(:subcategory).permit(:name, :category_id)
   end
