@@ -1,7 +1,6 @@
-  
 <%= form_for @bookmark do |f| %>
   <div class="bookmark-select">
-    <%= f.label :list, "Bookmark:" %><br>
+    <p>Bookmark:</p>
     <%= f.select :list, options_for_select(@bookmarks, 1), {}, id:"bookmark_select" %>
   </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>

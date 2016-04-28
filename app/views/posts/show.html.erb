@@ -1,44 +1,49 @@
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <div class="posts center_div">
 
-      <div class="post">
-        <h3 class="show-field"><%= @post.title %></h3>
-        <p class="show-field"><%= @post.description %></p>
-        <p class="show-field">Submitter: <%= @post.user.name %></p>
-        <div class="journal-articles">
-        <h3>Journal articles:</h3>
-        <% if @journal_articles.exists? %>
-          <%= render 'journal_articles' %>
-        <% else %>
-          <p>There are no relevant journal articles submitted for this post if you would like to add some: </p>
-          <% if user_signed_in? %>
-          <%= form_for @post do |f| %>
-          <div id="article-fields">
-            <%= f.fields_for :journal_articles do |article| %>
+<div class="row">
+  <div class="col-xs-3">
+    <%= render 'categories/categories' %>
+  </div>
+  <div class="col-xs-6" id="posts">
+    <div class="container">
+      <div class="posts" id="show-post">
+        <div class="post">
+          <h1><%= @post.title %></h1>
+          <p><%= @post.description %></p>
+          <p>Submitter: <%= @post.user.name %></p>
+          <div class="journal-articles">
+            <h3>Journal articles:</h3>
+            <% if @journal_articles.exists? %>
+            <%= render 'journal_articles' %>
+            <% else %>
+            <p>There are no relevant journal articles submitted for this post if you would like to add some: </p>
+            <% if user_signed_in? %>
+            <%= form_for @post do |f| %>
+            <div id="article-fields">
+              <%= f.fields_for :journal_articles do |article| %>
               <%= render 'journal_article_fields', f: article %>
+              <% end %>
+            </div>
+            <div class="links">
+              <%= link_to_add_association 'add article', f,  :journal_articles %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+            <% end %>
+            <% end %>
             <% end %>
           </div>
-          <div class="links">
-            <%= link_to_add_association 'add article', f,  :journal_articles %>
-          </div>
-          <div class="actions">
-            <%= f.submit %>
-          </div>
-          <% end %>
-        <% end %>
-        <% end %>
-        </div>
-        <h3>Research papers:</h3>
-        <% if @research_papers.exists? %>
+          <h3>Research papers:</h3>
+          <% if @research_papers.exists? %>
           <%= render 'research_papers' %>
-        <% else %>
+          <% else %>
           <p>There are no relevant research papers submitted for this post if you would like to add some: </p>
           <% if user_signed_in? %>
           <%= form_for @post do |f| %>
           <div id="research-fields">
             <%= f.fields_for :research_papers do |research| %>
-              <%= render 'research_paper_fields', f: research %>
+            <%= render 'research_paper_fields', f: research %>
             <% end %>
             <div class="links">
               <%= link_to_add_association 'add research', f, :research_papers %>
@@ -48,22 +53,23 @@
             <%= f.submit %>
           </div>
           <% end %>
-        <% end %>
-        <% end %>
-        <% if user_signed_in? %>
-          <%= render 'bookmarks/select' %>
-        <% end %>
-        <% if current_user != nil && current_user.admin? or current_user == @post.user %>
+          <% end %>
+          <% end %>
+          <% if user_signed_in? %>
+          <div class="bookmarking">
+            <%= render 'bookmarks/select' %>
+          </div>
+          <% end %>
+          <% if current_user != nil && current_user.admin? or current_user == @post.user %>
           <%= link_to 'Edit', edit_post_path(@post) %>
-        <% end %>
-        <%= link_to 'Back', :back %>
-      </div>
-      <div class="comments">
-      <% @comments.each do |comment| %>
-        <p><%= comment.comment %></p>
-      <% end %>
-      <% if user_signed_in? %>
-        <%= form_for @comment do |f| %>
+          <% end %>
+        </div>
+        <div class="comments">
+          <% @comments.each do |comment| %>
+          <p><%= comment.comment %></p>
+          <% end %>
+          <% if user_signed_in? %>
+          <%= form_for @comment do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :post_id, :value => params[:id] %>
           <%= f.label :comment %>
@@ -71,7 +77,9 @@
 
           <%= f.submit %>
           <% end %>
-        <% end %>
+          <% end %>
+        </div>
       </div>
+    </div>
   </div>
 </div>
