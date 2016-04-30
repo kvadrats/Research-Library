@@ -5,7 +5,7 @@ class CreateJournalArticles < ActiveRecord::Migration
       t.string :link
       t.string :author
       t.date :articledate
-      t.references :user, index: true, foreign_key: true
+      t.references :user, index: true
     end
   end
 end
