@@ -7,7 +7,7 @@ class CreateResearchPapers < ActiveRecord::Migration
       t.decimal :price, precision: 8, scale: 2
       t.string :author
       t.date :researchdate
-      t.references :user, index: true
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

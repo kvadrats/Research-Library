@@ -6,9 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Post.delete_all
-Category.delete_all
-Subcategory.delete_all
+  User.create(
+  	  :name 				 => "admin",
+      :email                 => "admin@admin.lv",
+      :password              => "nils!1995",
+      :password_confirmation => "nils!1995",
+      :admin 				 => "true"
+  )
 
 Category.create(name: 'Psychology')
 Category.create(name: 'Neuroscience')
@@ -26,10 +30,13 @@ Post.create(title: 'Use of MDMA in theraphy',
 	#researchdate: '2015-03-05',
 	subcategory_id: '1',
 	user_id: '1')
+
 Post.create(title: 'Phantom Vibrations',
 	description: 'Research is about how our phones make us hallucinate a vibration every now and then, why it is this way.',
 	#researchlink: 'http://www.sciencedirect.com/science/article/pii/S0747563212000799',
 	#researchauth: 'Michelle Drouin, Daren H. Kaiser, Daniel A. Miller',
 	#researchdate: '2012-03-13',
 	subcategory_id: '1',
+	created_at: Time.now.utc,
+	updated_at: Time.now.utc,
 	user_id: '1')

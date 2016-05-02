@@ -151,9 +151,11 @@ ActiveRecord::Schema.define(version: 20160429200002) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "journal_articles", "posts"
   add_foreign_key "journal_articles", "users"
   add_foreign_key "posts", "subcategories"
   add_foreign_key "posts", "users"
   add_foreign_key "research_papers", "posts"
   add_foreign_key "research_papers", "users"
+  add_foreign_key "subcategories", "categories"
 end

@@ -8,6 +8,8 @@ class PagesController < ApplicationController
 			else
 				@posts = Post.order(:created_at)
 			end
+		else
+			@posts = Post.order(:created_at)
 		end
 		@allcategories = Category.all
 		@allsubcategories = Subcategory.all
