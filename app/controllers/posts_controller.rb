@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     end
     @journal_articles = @post.journal_articles
     @research_papers = @post.research_papers
-    @comments = Comment.where(params[:post_id])#.order(:created_at)
+    @comments = Comment.where(post_id: params[:id])
     @comment = Comment.new(parent_id: params[:parent_id])
 
     @allcategories = Category.all
