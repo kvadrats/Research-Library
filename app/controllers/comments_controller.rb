@@ -5,11 +5,15 @@ class CommentsController < ApplicationController
     @comment = Comment.new(parent_id: params[:parent_id])
   end
 
+  def show
+    @comments = Comment.where(post_id: params[:id])#.order(:created_at)
+  end
+
 
 
   def create
     @comment = Comment.new(comment_params)
-    @post = Post.find_by(@comment.post_id)
+    @post = Post.find_by(id: @comment.post_id)
 
     if @comment.save
       redirect_to @post, notice: 'Comment was successfully created.'

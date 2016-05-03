@@ -9,6 +9,9 @@
       <div class="posts" id="show-post">
         <div class="post">
           <h1><%= @post.title %></h1>
+          <% if current_user != nil && current_user.admin? or current_user == @post.user %>
+          <%= link_to 'Edit', edit_post_path(@post) %>
+          <% end %>
           <p><%= @post.description %></p>
           <p>Submitter: <%= @post.user.name %></p>
           <div class="journal-articles">
@@ -60,14 +63,15 @@
             <%= render 'bookmarks/select' %>
           </div>
           <% end %>
-          <% if current_user != nil && current_user.admin? or current_user == @post.user %>
-          <%= link_to 'Edit', edit_post_path(@post) %>
-          <% end %>
         </div>
         <div class="comments">
-          <%= nested_comments @comments.arrange(order: :created_at) %>
+          <% if @comments != nil %>
+          <%= nested_comments (@comments.arrange(:order => :created_at)) %>
+          <% else %>
+          <p>There are no comments, if you would like to comment: </p>
+          <% end %>
           <% if user_signed_in? %>
-            <%= render 'comments/form'%>
+          <%= render 'comments/form'%>
           <% end %>
         </div>
       </div>
