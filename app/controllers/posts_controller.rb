@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   #validates :articlelink, uniqueness: true, if: 'articlelink.present?'
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
+  before_action :require_permission, only: [:edit, :update, :destroy]
   respond_to :js
   # GET /posts
   # GET /posts.json

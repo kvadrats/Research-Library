@@ -9,10 +9,16 @@ class ApplicationController < ActionController::Base
     (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
   end
 
+  def require_permission
+    if current_user != Post.find(params[:id]).user && current_user.admin == false
+      redirect_to root_path
+    end
+  end
+
   protected
 
-	def configure_permitted_parameters
-  		devise_parameter_sanitizer.for(:sign_up) << :name
-  		devise_parameter_sanitizer.for(:account_update) << :name
-	end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) << :name
+      devise_parameter_sanitizer.for(:account_update) << :name
+    end
 end
