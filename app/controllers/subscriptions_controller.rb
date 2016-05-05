@@ -3,6 +3,9 @@ class SubscriptionsController < ApplicationController
   def submanagement
     @categories = Category.all
     @subcategories = Subcategory.all
+
+    @subscribed = current_user.subcategories
+
   end
 
   def subscribe

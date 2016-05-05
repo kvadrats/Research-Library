@@ -71,7 +71,7 @@
                   <% end %>
                   <li><%= link_to 'Edit login informtion', edit_user_registration_path %></li>
                   <li><%= link_to 'My submissions', submissions_managements_path %></li>
-                  <li><%= link_to 'Subscription management' %></li>
+                  <li><%= link_to 'Subscription management', submanagement_subcategories_path %></li>
                   <li><%= link_to 'Contact admin' %></li>
                 </ul>
               </li>
@@ -80,10 +80,9 @@
               <li><%= link_to 'Lists', bookmarks_path %></li>
               <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
             </ul>
-              <% else %>
-              <li><%= link_to 'Log In', new_user_session_path %></li>
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <% end %>
+            <% else %>
+              <%= render 'devise/sessions/form' %>
+            <% end %>
             <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
           </div>
           <div class="affix" id="subscribe-button">
