@@ -1,3 +1,8 @@
-<h3><%= @user.name %></h3>
-
-<%= render 'posts/posts' %>
+		<div class="row">
+			<div class="col-xs-3">
+				<h3><%= @user.name %></h3>
+			</div>
+			<div class="col-xs-6" id="posts">
+				<%= render 'posts/posts' %>
+			</div>
+		</div>

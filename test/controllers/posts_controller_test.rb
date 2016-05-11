@@ -2,10 +2,14 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
+    @user = User.create {
+      name:'lalal'
+    }
     @post = posts(:one)
     @update = {
   title: 'Something but actually nothing',
   description: 'There is actually nothing here, tis but a simple test',
+  user_id: 1
   
     }
   end
