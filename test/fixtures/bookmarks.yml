@@ -1,11 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+firstlist:
+  list: First
+  user_id: 1
+  post_id: 
 
 one:
-  list: MyString
-  user_id: 
-  post_id: 
+  list: First
+  user_id: 1
+  post_id: 1
+
+secondlist:
+  list: Second
+  user_id: 2
+  post_id:
 
 two:
-  list: MyString
-  user_id: 
-  post_id: 
+  list: Second
+  user_id: 2 
+  post_id: 2

@@ -6,7 +6,8 @@ one:
   price: 9.99
   author: MyString
   researchdate: 2016-04-12
-  user_id: 
+  user: admin
+  post: one
 
 two:
   title: MyString
@@ -14,4 +15,5 @@ two:
   price: 9.99
   author: MyString
   researchdate: 2016-04-12
-  user_id: 
+  user: author
+  post: two
