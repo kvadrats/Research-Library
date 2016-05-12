@@ -5,8 +5,9 @@
 			<div class="col-xs-6">
 				<div class="container" id="post-form">
 					<h1 class="center_h1">Edit Post</h1>
+					<%= link_to 'Show post page', @post %><br>
+					<%= link_to 'Delete post', @post, method: :delete, data: { confirm: "Are you sure you want to destroy this post?" } %>
 					<%= render 'form' %>	
-					<%= link_to 'Show', @post %>
 				</div>
 			</div>
 		</div>

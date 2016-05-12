@@ -2,11 +2,17 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
 
-	test "should not save a post without title" do
+	def setup
+		@post = Post.create(title: "Example Title", description: "lalalaalalalala")
+	end
+
+	test "should not save a post without title and description" do
 		post = Post.new
 		assert_not post.save
 	end
-  # test "the truth" do
-  #   assert true
-  # end
+
+	test "should not save a post with an existsting title" do
+		duplicate_post = @post.dup
+		assert_not duplicate_post.save
+	end
 end
