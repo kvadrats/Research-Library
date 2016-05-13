@@ -34,6 +34,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_permission_bookmarks
+    if current_user.id != Bookmark.find(params[:id]).user_id
+      redirect_to root_path
+    end
+  end
+
   protected
 
     def configure_permitted_parameters

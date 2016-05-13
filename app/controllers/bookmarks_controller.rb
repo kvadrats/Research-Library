@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :require_permission_bookmarks, only: [:destroy, :show]
   def index
     @lists = Bookmark.where(user_id: current_user.id).where(post_id: nil)
     @bookmarks = Bookmark.where(user_id: current_user.id).where.not(post_id: nil)

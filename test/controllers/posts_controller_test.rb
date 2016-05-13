@@ -130,13 +130,13 @@ class PostsControllerTest < ActionController::TestCase
     end
     assert_redirected_to root_path
   end
-  test "should add to bookmarks as authorized user" do
-    sign_in @admin
-    assert_difference('Bookmark.count', +1) do
-      get :show, id: @post
-      @bookmark.save
-    end
-    assert_redirected_to bookmarks_path
-  end
+  # test "should add to bookmarks as authorized user" do
+  #   sign_in @admin
+  #   assert_difference('Bookmark.count', +1) do
+  #     get :show, id: @post
+  #     @bookmark.save
+  #   end
+  #   assert_redirected_to bookmarks_path
+  # end
 
 end

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SubscriptionsControllerTest < ActionController::TestCase
-  # include Devise::TestHelpers
+  include Devise::TestHelpers
 
   # def setup
 		# @subcategory = subcategories(:one)
