@@ -4,11 +4,11 @@ class BookmarksControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   def setup
-  	@authorslist = bookmarks(:secondlist)
-  	@adminslist = bookmarks(:firstlist)
     @admin = users(:admin)
     @author = users(:author)
     @user = users(:user)
+  	@authorslist = bookmarks(:secondlist)
+  	@adminslist = bookmarks(:firstlist)
     @update = {
   list: 'test number one',
     }
@@ -57,7 +57,11 @@ class BookmarksControllerTest < ActionController::TestCase
   end
 
   test "should be able to view posts in users own list" do 
-
+  	sign_in @author
+  	get :show, id: @authorslist
+    assert_response :success
+    assert_not_nil assigns(:posts)
+    assert_not_nil assigns(:bookmarks)
   end
 
   test "shouldn't be able to view another users bookmarks" do 

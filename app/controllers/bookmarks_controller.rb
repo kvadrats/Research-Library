@@ -27,6 +27,7 @@ class BookmarksController < ApplicationController
     @bookmarks = Bookmark.where.not(post_id: nil).where(list: @list.list)
     @posts = Post.where(:id => @bookmarks.map(&:post_id))
   end
+
   def create
     @bookmark = Bookmark.new(bookmark_params)
 
@@ -34,6 +35,14 @@ class BookmarksController < ApplicationController
       redirect_to bookmarks_url
     else
       render :new
+    end
+  end
+  
+private
+
+  def require_permission_bookmarks
+    if current_user.id != Bookmark.find(params[:id]).user_id
+      redirect_to root_path
     end
   end
 
