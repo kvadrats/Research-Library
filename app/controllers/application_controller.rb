@@ -34,9 +34,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_permission_bookmarks
-    if current_user.id != Bookmark.find(params[:id]).user_id
-      redirect_to root_path
+  def logged_in
+    if user_signed_in? == false
+      redirect_to new_user_session_path
     end
   end
 

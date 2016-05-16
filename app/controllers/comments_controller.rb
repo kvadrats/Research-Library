@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :require_premission_comments ,only: [:edit, :destroy]
-  before_action :user_signed_in?
+  before_action :logged_in
+  before_action :require_permission_comments ,only: [:edit, :destroy]
 
   def new
     @comment = Comment.new(parent_id: params[:parent_id])
@@ -27,13 +27,14 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @post = @comment.post
     @comment.destroy
-    redirect_to :back
+    redirect_to @post
   end
 
 private
 
-  def require_premission_comments
+  def require_permission_comments
     if current_user.id != Comment.find(params[:id]).user_id && current_user.admin == false
       redirect_to root_path
     end

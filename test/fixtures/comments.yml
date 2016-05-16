@@ -9,4 +9,9 @@ two:
   post: two 
   user: author
   comment: MyText
+
+nestedtwo:
+  post: two 
+  user: author
+  comment: MyText
   ancestry: one
