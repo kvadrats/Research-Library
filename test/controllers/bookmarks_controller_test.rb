@@ -3,7 +3,7 @@ require 'test_helper'
 class BookmarksControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
-  def setup
+  setup do
     @admin = users(:admin)
     @author = users(:author)
     @user = users(:user)

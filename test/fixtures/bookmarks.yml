@@ -1,20 +1,40 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# firstlist:
+#   list: first
+#   post:  
+#   user: admin
+
+# one:
+#   list: first
+#   post: one
+#   user: admin
+
+# secondlist:
+#   list: second
+#   post:
+#   user: author
+
+# two:
+#   list: second
+#   post: two
+#   user: author
+
 firstlist:
   list: first
-  post: 
-  user: admin
+  post_id:  
+  user_id: admin
 
 one:
   list: first
-  post: one
-  user: admin
+  post_id: one
+  user_id: admin
 
 secondlist:
   list: second
-  post:
-  user: author
+  post_id:
+  user_id: author
 
 two:
   list: second
-  post: two
-  user: author
+  post_id: two
+  user_id: author

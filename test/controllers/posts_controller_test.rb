@@ -23,13 +23,13 @@ class PostsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:posts)
   end
 
-  test "test should get index as guest" do
+  test "test should get post index as guest" do
     get :index
     assert_response :success
     assert_not_nil assigns(:posts)    
   end
 
-  test "should get new as authenticated user" do
+  test "should get new post as authenticated user" do
     sign_in User.first
     get :new
     assert_response :success
@@ -37,7 +37,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should create post as authenticated user" do
     sign_in User.first
-    assert_difference('Post.count') do
+    assert_difference('Post.count', +1) do
       post :create, post: @update
     end
 
@@ -54,7 +54,7 @@ class PostsControllerTest < ActionController::TestCase
     get :show, id: @authorspost
     assert_response :success
   end
-  test "should get edit for admin" do
+  test "should get edit post for admin" do
     sign_in @admin
     get :edit, id: @authorspost
     assert_response :success
@@ -66,12 +66,12 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "shouldn't get edit for guest" do
+  test "shouldn't get edit post for guest" do
     get :edit, id: @authorspost
     assert_redirected_to new_user_session_path
   end
 
-  test "shouldn't get edit as unaffiliated user" do
+  test "shouldn't get edit post as unaffiliated user" do
     sign_in @user
     get :edit, id: @authorspost
     assert_redirected_to root_path
