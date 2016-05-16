@@ -1,6 +1,11 @@
   <div id="comment">
   	<p><%= link_to comment.user.name, comment.user %></p>
   	<p><%= comment.comment %></p>
+  	<% if current_user != nil %>
   	<%= link_to "Reply", new_comment_path(parent_id: comment) %> 
-  	<%= link_to "Destroy", comment, confirm: "Are you sure?", method: :delete %>
+  	<% if current_user.admin? or current_user == comment.user %>
+  		<%= link_to "Edit", edit_comment_path(comment) %>
+  		<%= link_to "Destroy", comment, confirm: "Are you sure?", method: :delete %>
+  	<% end %>
+  	<% end %>
   </div>
