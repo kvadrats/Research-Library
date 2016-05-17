@@ -70,4 +70,20 @@ class SubcategoriesControllerTest < ActionController::TestCase
       end
       assert_redirected_to root_path
     end
+
+     test "should get edit as admin" do 
+      sign_in @admin
+      get :edit, id: @subcategory
+      assert_response :success
+     end
+
+     test "shouldn't get edit as user" do
+      get :edit, id: @subcategory
+      assert_redirected_to root_path
+     end
+
+     test "shouldn't get edit as guest" do
+      get :edit, id: @subcategory
+      assert_redirected_to root_path
+     end
 end
