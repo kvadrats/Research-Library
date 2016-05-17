@@ -20,7 +20,7 @@ class SubcategoriesController < ApplicationController
     @subcategory = Subcategory.new(subcategory_params)
 
     if @subcategory.save
-      redirect_to :back
+      redirect_to categories_path
     else
       render :new
     end
