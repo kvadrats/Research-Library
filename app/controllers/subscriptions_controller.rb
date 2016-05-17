@@ -14,7 +14,7 @@ class SubscriptionsController < ApplicationController
 
     user.subcategories << subcategory
     user.save
-    redirect_to :back
+    redirect_to subcategory
 
   end
 
@@ -23,7 +23,7 @@ class SubscriptionsController < ApplicationController
     user = current_user
 
     user.subcategories.delete(subcategory)
-    redirect_to :back
+    redirect_to subcategory
   end
 
 
