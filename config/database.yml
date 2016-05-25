@@ -1,23 +1,17 @@
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: SQL_ASCII
   database: Research-Library_development
   pool: 5
-  username: emilskantans
-  password:
+  host: localhost
+  username: kvadrats
+  password: secret
 
 test:
   adapter: postgresql
-  encoding: unicode
+  encoding: SQL_ASCII
   database: Research-Library_test
+  host: localhost
   pool: 5
-  username: emilskantans
-  password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: Research-Library_production
-  pool: 5
-  username: emilskantans
-  password: 
+  username: kvadrats
+  password: secret
